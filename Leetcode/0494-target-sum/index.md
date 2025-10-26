@@ -92,7 +92,34 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+class Solution {
+public:
+    int f(int i , vector<int> &arr, int target, vector<vector<int>>&dp){
+        if (i == 0) {
+            if (target == 0 && arr[0] != 0) return 1;
+            if (target == 0 && arr[0] == 0) return 2; 
+            if (arr[0] == target) return 1;
+            return 0;
+        }
+        if (dp[i][target] != -1) return dp[i][target];
+        int notTake = f(i -1, arr, target, dp);
+        int take = 0;
+        if(arr[i] <= target) take = f(i-1, arr, target - arr[i], dp);
+        return dp[i][target] = take + notTake;
+    }
+    int countPartitions(vector<int>& arr, int d) {
+        int n = arr.size();
+        int sum = accumulate(arr.begin(), arr.end(), 0ll);
+        int s2 = (sum - d);
+        if(s2 < 0 || s2 % 2 == 1) return 0;
+        s2 /= 2;
+        vector<vector<int>> dp(n, vector<int> (s2 + 1, -1));
+        return f(n - 1, arr, s2, dp);
+    }
+    int findTargetSumWays(vector<int>& nums, int target) {
+        return countPartitions(nums, target);
+    }
+};
 ```
 
 </template>

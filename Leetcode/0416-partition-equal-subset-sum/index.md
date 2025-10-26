@@ -82,7 +82,26 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+class Solution {
+public:
+    bool f(int i, int sum, vector<int>& arr, vector<vector<int>> &dp){
+        if(sum == 0) return 1;
+        if(i == 0) return (arr[0] == sum);
+        if(dp[i][sum] != -1) return dp[i][sum];
+        bool notTake = f(i - 1, sum, arr, dp);
+        bool Take = false;
+        if(arr[i] <= sum) Take = f(i - 1, sum - arr[i], arr, dp);
+        return dp[i][sum] = notTake | Take;
+    }
+    bool canPartition(vector<int>& nums) {
+        int sum = accumulate(nums.begin(), nums.end(), 0LL);
+        if(sum & 1) return false;
+        int n = nums.size();
+        int target = sum / 2;
+        vector<vector<int>> dp(n, vector<int> (target + 1, -1));
+        return f(n -1, target, nums, dp);
+    }
+};
 ```
 
 </template>
