@@ -52,7 +52,6 @@
         <div class="role" v-if="role">{{ role }}</div>
       </div>
 
-      <hr class="divider" />
 
       <div class="bottom">
         <p class="desc">{{ description }}</p>
@@ -231,7 +230,7 @@ body[data-theme="light"] :root,
 .outline-svg {
   position: absolute;
   inset: 0;
-  width: 100%;
+  width: 94%;
   height: 100%;
   z-index: 3;
   pointer-events: none;
@@ -244,11 +243,12 @@ body[data-theme="light"] :root,
 
 /* top area */
 .top {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 36px 24px 12px 24px;
-  gap: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 14px 12px 10px;
+    gap: 12px;
+    width: 100%;
 }
 
 .badge {
@@ -321,14 +321,16 @@ body[data-theme="light"] :root,
   font-weight: 600;
 }
 
-/* name & role */
+
 .name {
-  margin: 6px 0 0 0;
-  font-size: 36px;
-  line-height: 1;
-  color: var(--text-main);
-  font-weight: 600;
-  text-align: center;
+      margin: 6px 0 0 0;
+    font-size: 32px;
+    line-height: 1;
+    color: var(--text-main);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    text-align: center;
 }
 
 .role {
@@ -348,15 +350,15 @@ body[data-theme="light"] :root,
 }
 
 .bottom {
-  position: absolute;
-  top: 76%;
-  z-index: 5;
-  padding: 18px 28px 20px 28px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  flex: 1 1 auto;
-  align-items: center;
+      position: relative;
+    z-index: 5;
+    padding: 13px 9px 13px 9px;
+    display: flex
+;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex: 1 1 auto;
+    align-items: center;
 }
 
 .desc {
@@ -364,8 +366,11 @@ body[data-theme="light"] :root,
   color: var(--desc-muted);
   font-size: 14px;
   line-height: 1.6;
-  text-align: left;
+  text-align: center;
 }
+
+
+
 
 /* links row */
 .links {
@@ -382,7 +387,7 @@ body[data-theme="light"] :root,
   gap: 6px;
   padding: 6px 10px;
   border-radius: 8px;
-  background: #e9e8e826;
+  background: #ff9c2a5c;
   color: var(--text-main);
   font-size: 13px;
   text-decoration: none;
@@ -483,7 +488,7 @@ html[data-theme="light"] .link-btn {
   
   .bottom {
     padding: 14px 18px 18px 18px;
-    top: 72%;
+    
   }
   
   .desc {
@@ -546,7 +551,7 @@ html[data-theme="light"] .link-btn {
   
   .bottom {
     padding: 12px 16px 16px 16px;
-    top: 70%;
+   
   }
 }
 </style>
