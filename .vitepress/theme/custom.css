@@ -461,47 +461,60 @@ div[class*='language-']:hover {
 	opacity: 0.9;
 }
 
-/* Table link buttons styling - matches the View button design */
-table td a,
-table th a {
+/* Only style links that contain "Open" or "View" */
+table td a[href]:is([href*='./'], :has-text('Open'), :has-text('View')),
+table td a[href]:is([href*='./'], :has-text('Explore->'), :has-text('Explore->')),
+table th a[href]:is([href*='./'], :has-text('Open'), :has-text('View')) {
 	display: inline-flex;
 	align-items: center;
-	justify-content: center;
-	gap: 4px;
-	padding: 4px 10px;
-	background: #3d4463;
-	color: #b4befe;
-	border: 2px solid transparent;
-	border-radius: 4px;
-	text-decoration: none;
-	font-size: 14px;
-	font-weight: 800;
-	transition: all 0.3s ease;
+	gap: 6px;
+	padding: 6px 12px;
+	border: 1px solid var(--vp-c-divider);
+	border-radius: 6px;
+	font-size: 13px;
+	font-weight: 500;
 	cursor: pointer;
-	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+	transition: all 0.2s ease;
+	text-decoration: none;
+	background: var(--vp-c-bg);
+	color: var(--vp-c-text-2);
 }
 
-table td a:hover,
-table th a:hover {
-	background: #424968;
-	border-color: #b4befe;
-	color: #c9d1ff;
-	box-shadow: 0 4px 12px rgba(180, 190, 254, 0.2);
-	transform: translateY(-1px);
+table td a[href]:is([href*='./'], :has-text('Open'), :has-text('View')):hover,
+table th a[href]:is([href*='./'], :has-text('Open'), :has-text('View')):hover {
+	background: var(--vp-c-bg-soft);
+	border-color: var(--vp-c-brand);
+	color: var(--vp-c-brand);
 }
 
-table td a:active,
-table th a:active {
-	transform: translateY(0);
-	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+/* Reusable button link class */
+.btn-link {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	padding: 6px 12px;
+	border: 1px solid var(--vp-c-divider);
+	border-radius: 6px;
+	font-size: 13px;
+	font-weight: 500;
+	cursor: pointer;
+	transition: all 0.2s ease;
+	text-decoration: none;
+	background: var(--vp-c-bg);
+	color: var(--vp-c-text-2);
+}
+
+.btn-link:hover {
+	background: var(--vp-c-bg-soft);
+	border-color: var(--vp-c-brand);
+	color: var(--vp-c-brand);
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-	table td a,
-	table th a {
-		padding: 3px 8px;
-		font-size: 11px;
-		gap: 3px;
+	.btn-link {
+		padding: 5px 10px;
+		font-size: 12px;
+		gap: 5px;
 	}
 }
