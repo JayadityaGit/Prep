@@ -5,6 +5,10 @@ hero:
     name: 'Inside the Interview'
     text: 'Real experiences. Real lessons.'
     tagline: Google, Microsoft, Goldman Sachs, Uber, & More
+    actions:
+        - theme: brand
+          text: Share Your Experience
+          link: /GForm/
 
 features:
     - icon: '<img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" width="36" style="vertical-align:middle;">'
@@ -41,11 +45,6 @@ features:
       title: Optum
       details: Where healthcare meets high code pressure, fixing bugs faster than symptoms and optimizing systems before patients.
       link: ./Optum
-
-
-
-
-    
 ---
 
 ## Contributing
