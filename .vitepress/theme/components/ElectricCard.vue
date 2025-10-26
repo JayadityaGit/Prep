@@ -54,7 +54,7 @@
 
 
       <div class="bottom">
-        <div class="dest2"><p class="desc">{{ description }}</p></div>
+        <p class="desc">{{ description }}</p>
 
         <div class="links" v-if="links && links.length">
           <a
@@ -211,6 +211,21 @@ body[data-theme="light"] :root,
   border-radius: 50%;
 }
 
+.content {
+  position: absolute;
+  inset: 6px;
+  align-items: center;
+  border-radius: calc(var(--radius) - 4px);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  background:
+    linear-gradient(-30deg, var(--card-bg-top), rgba(0,0,0,0)),
+    linear-gradient(to bottom, var(--card-bg-top), var(--card-bg-bottom));
+  box-shadow: var(--card-box-shadow), var(--card-inset-shadow);
+  color: var(--text-main);
+}
+
 /* outline svg */
 .outline-svg {
   position: absolute;
@@ -224,6 +239,30 @@ body[data-theme="light"] :root,
 
 .outline-rect {
   filter: drop-shadow(0 6px 18px var(--outline-shadow-color));
+}
+
+/* top area */
+.top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 14px 12px 10px;
+    gap: 12px;
+    width: 100%;
+}
+
+.badge {
+  display: inline-block;
+  background: var(--badge-bg);
+  color: var(--badge-text);
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  border: 1px solid var(--badge-border);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02);
 }
 
 /* avatar container with glow */
@@ -282,52 +321,16 @@ body[data-theme="light"] :root,
   font-weight: 600;
 }
 
-.badge {
-  display: inline-block;
-  background: var(--badge-bg);
-  color: var(--badge-text);
-  padding: 8px 14px;
-  border-radius: 999px;
-  font-weight: 700;
-  font-size: 12px;
-  letter-spacing: 0.6px;
-  text-transform: uppercase;
-  border: 1px solid var(--badge-border);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02);
-}
 
-.content {
-  position: absolute;
-  inset: 6px;
-  align-items: center;
-  border-radius: calc(var(--radius) - 4px);
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  background:
-    linear-gradient(-30deg, var(--card-bg-top), rgba(0,0,0,0)),
-    linear-gradient(to bottom, var(--card-bg-top), var(--card-bg-bottom));
-  box-shadow: var(--card-box-shadow), var(--card-inset-shadow);
-  color: var(--text-main);
-}
-/* top area */
-.top {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 24px 14px 9px 14px;
-  gap: 6px;
-  width:100%;
-}
-
-/* name & role */
 .name {
-  margin: 6px 0 0 0;
-  font-size: 36px;
-  line-height: 1;
-  color: var(--text-main);
-  font-weight: 600;
-  text-align: center;
+      margin: 6px 0 0 0;
+    font-size: 32px;
+    line-height: 1;
+    color: var(--text-main);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    text-align: center;
 }
 
 .role {
@@ -347,14 +350,15 @@ body[data-theme="light"] :root,
 }
 
 .bottom {
- position: relative;
-  margin-top: auto;           /* pushes it to the bottom */
-  width: 100%;
-  padding: 14px 28px 22px;
-  display: flex;
-  justify-content: center;    /* center children horizontally */
-  align-items: center;
-  flex-direction:column;
+      position: relative;
+    z-index: 5;
+    padding: 13px 9px 13px 9px;
+    display: flex
+;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex: 1 1 auto;
+    align-items: center;
 }
 
 .desc {
@@ -364,6 +368,9 @@ body[data-theme="light"] :root,
   line-height: 1.6;
   text-align: center;
 }
+
+
+
 
 /* links row */
 .links {
@@ -380,7 +387,7 @@ body[data-theme="light"] :root,
   gap: 6px;
   padding: 6px 10px;
   border-radius: 8px;
-  background: #e9e8e826;
+  background: #ff9c2a5c;
   color: var(--text-main);
   font-size: 13px;
   text-decoration: none;
@@ -481,7 +488,7 @@ html[data-theme="light"] .link-btn {
   
   .bottom {
     padding: 14px 18px 18px 18px;
-    top: 72%;
+    
   }
   
   .desc {
@@ -544,7 +551,7 @@ html[data-theme="light"] .link-btn {
   
   .bottom {
     padding: 12px 16px 16px 16px;
-    top: 70%;
+   
   }
 }
 </style>
