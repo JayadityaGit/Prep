@@ -3,46 +3,46 @@ layout: home
 hero:
     name: 'BTech EIE Syllabus NIT SILCHAR'
     text: 'Complete EIE Syllabus'
-    tagline: The art of measuring everything — except your marks.
+    tagline: Measuring signals, sensing chaos, and controlling whatever’s still working.
 
 features:
     - icon: 🎯
       title: SEM 1
-      details: Comprehensive DSA problems from LeetCode with solutions in Java and C++. Organized by topics and difficulty.
+      details: What are we actually measuring? No clue yet, but the multimeter says it’s working, so we’ll take it as a win.
       link: /Syllabus/SEM1/
 
     - icon: 🏗️
       title: SEM 2
-      details: SOLID principles, design patterns, and real-world case studies with complete implementations.
-      link: /Syllabu/SEM2/
+      details: We connected sensors and wires, and somehow things started blinking. Still not sure if that’s a success or a short circuit.
+      link: /Syllabus/SEM2/
 
     - icon: 💻
       title: SEM 3
-      details: Complete OS concepts with detailed notes and diagrams covering processes, memory, and more.
+      details: Signals make sense on paper -> until the oscilloscope says otherwise.
       link: /Syllabus/SEM3/
 
     - icon: 🗄️
       title: SEM 4
-      details: DBMS fundamentals, SQL queries, normalization, indexing, and optimization techniques.
+      details: Instrumentation sounds fancy until we realize we’re just measuring errors in measurements.
       link: /Syllabus/SEM4/
 
     - icon: 🌐
       title: SEM 5
-      details: Network layers, protocols, TCP/IP, HTTP, and networking concepts with visual diagrams.
+      details: Control Systems teach us how to maintain stability sadly, not in real life.
       link: /Syllabus/SEM5/
 
     - icon: ☕
       title: SEM 6
-      details: Object-oriented programming concepts, Java fundamentals, multithreading, and exception handling.
+      details: We’re learning automation, but somehow can’t automate our assignments.
       link: /Syllabus/SEM6/
 
     - icon: ⚡
       title: SEM 7
-      details: C++ concepts, STL, pointers, memory management, and problem-solving techniques.
+      details: Circuits, sensors, and simulations -> we’re just trying to keep the smoke inside the components.
       link: /Syllabus/SEM7/
 
     - icon: 📊
       title: SEM 8
-      details: SQL queries, database operations, and practical examples for interview preparation.
+      details: After years of calibrating instruments and chaos, we’ve finally learned that precision is overrated, as long as it works.
       link: /Syllabus/SEM8/
 ---

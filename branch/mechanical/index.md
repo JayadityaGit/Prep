@@ -1,48 +1,48 @@
 ---
 layout: home
 hero:
-    name: 'BTech Mechanical Engineering Syllabus NIT SILCHAR'
-    text: 'Complete Mechanical Engineering Syllabus'
-    tagline: Moving parts, moving deadlines, and a love story with machines.
+  name: 'BTech Mechanical Engineering Syllabus NIT SILCHAR'
+  text: 'Complete Mechanical Engineering Syllabus'
+  tagline: 'Moving parts, moving deadlines, and a love story with machines.'
 
 features:
-    - icon: 🎯
-      title: SEM 1
-      details: Comprehensive DSA problems from LeetCode with solutions in Java and C++. Organized by topics and difficulty.
-      link: /Syllabus/SEM1/
+  - icon: 🎯
+    title: SEM 1
+    details: What really makes things move? We’re not totally sure yet, but it probably involves gears, grease, and a lot of guessing.
+    link: /Syllabus/SEM1/
 
-    - icon: 🏗️
-      title: SEM 2
-      details: SOLID principles, design patterns, and real-world case studies with complete implementations.
-      link: /Syllabu/SEM2/
+  - icon: 🏗️
+    title: SEM 2
+    details: We learned about thermodynamics, but somehow we’re still freezing in class. Heat transfer remains a mystery, both in theory and in the lab.
+    link: /Syllabus/SEM2/
 
-    - icon: 💻
-      title: SEM 3
-      details: Complete OS concepts with detailed notes and diagrams covering processes, memory, and more.
-      link: /Syllabus/SEM3/
+  - icon: 💻
+    title: SEM 3
+    details: Strength of Materials taught us how things bend, break, and fail -> just like us during exams.
+    link: /Syllabus/SEM3/
 
-    - icon: 🗄️
-      title: SEM 4
-      details: DBMS fundamentals, SQL queries, normalization, indexing, and optimization techniques.
-      link: /Syllabus/SEM4/
+  - icon: 🗄️
+    title: SEM 4
+    details: Fluid Mechanics sounded cool until the equations started to flow endlessly. Still trying to figure out why everything leaks.
+    link: /Syllabus/SEM4/
 
-    - icon: 🌐
-      title: SEM 5
-      details: Network layers, protocols, TCP/IP, HTTP, and networking concepts with visual diagrams.
-      link: /Syllabus/SEM5/
+  - icon: 🌐
+    title: SEM 5
+    details: Theory of Machines? We thought it’d be about cars, not endless linkages and diagrams that move in ways we can’t imagine.
+    link: /Syllabus/SEM5/
 
-    - icon: ☕
-      title: SEM 6
-      details: Object-oriented programming concepts, Java fundamentals, multithreading, and exception handling.
-      link: /Syllabus/SEM6/
+  - icon: ☕
+    title: SEM 6
+    details: Manufacturing labs smell like oil, noise, and confusion. We’re still not sure what the CNC machine is actually doing.
+    link: /Syllabus/SEM6/
 
-    - icon: ⚡
-      title: SEM 7
-      details: C++ concepts, STL, pointers, memory management, and problem-solving techniques.
-      link: /Syllabus/SEM7/
+  - icon: ⚡
+    title: SEM 7
+    details: Design projects everywhere, deadlines closing in, and the only thing we’ve successfully assembled is stress.
+    link: /Syllabus/SEM7/
 
-    - icon: 📊
-      title: SEM 8
-      details: SQL queries, database operations, and practical examples for interview preparation.
-      link: /Syllabus/SEM8/
+  - icon: 📊
+    title: SEM 8
+    details: After years of bolts, bearings, and burnout, we’ve finally learned how things work and how to fix them when they don’t.
+    link: /Syllabus/SEM8/
 ---

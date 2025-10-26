@@ -3,46 +3,46 @@ layout: home
 hero:
     name: 'BTech Civil Syllabus NIT SILCHAR'
     text: 'Complete Civil Engineering Syllabus'
-    tagline: Building the world one beam at a time — while battling soil, structures, and stress.
+    tagline: Building the world one beam at a time -> while battling soil, structures, and stress.
 
 features:
     - icon: 🎯
       title: SEM 1
-      details: Comprehensive DSA problems from LeetCode with solutions in Java and C++. Organized by topics and difficulty.
+      details: What really keeps a building from falling? We’re not totally sure yet, but with enough cement and calculations.
       link: /Syllabus/SEM1/
 
     - icon: 🏗️
       title: SEM 2
-      details: SOLID principles, design patterns, and real-world case studies with complete implementations.
-      link: /Syllabu/SEM2/
+      details: We draw lines, measure angles, and hope it all adds up to something that won’t collapse.
+      link: /Syllabus/SEM2/
 
     - icon: 💻
       title: SEM 3
-      details: Complete OS concepts with detailed notes and diagrams covering processes, memory, and more.
+      details: Fluid Mechanics sounded peaceful until we realized water can cause more problems than it solves.
       link: /Syllabus/SEM3/
 
     - icon: 🗄️
       title: SEM 4
-      details: DBMS fundamentals, SQL queries, normalization, indexing, and optimization techniques.
+      details: Structural Analysis taught us how forces work -> mostly against us.
       link: /Syllabus/SEM4/
 
     - icon: 🌐
       title: SEM 5
-      details: Network layers, protocols, TCP/IP, HTTP, and networking concepts with visual diagrams.
+      details: Surveying seemed simple until we realized every wrong angle means a tilted building.
       link: /Syllabus/SEM5/
 
     - icon: ☕
       title: SEM 6
-      details: Object-oriented programming concepts, Java fundamentals, multithreading, and exception handling.
+      details: Concrete Technology — the only subject where we mix things up and hope they stay solid.
       link: /Syllabus/SEM6/
 
     - icon: ⚡
       title: SEM 7
-      details: C++ concepts, STL, pointers, memory management, and problem-solving techniques.
+      details: Design projects, site plans, and endless reports — our only foundation is caffeine.
       link: /Syllabus/SEM7/
 
     - icon: 📊
       title: SEM 8
-      details: SQL queries, database operations, and practical examples for interview preparation.
+      details: After years of drawings and calculations, we finally understand how to make things stand tall.
       link: /Syllabus/SEM8/
 ---

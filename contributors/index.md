@@ -53,8 +53,8 @@
   badge="Collaborator"
   image="https://res.cloudinary.com/dzgoq3ikq/image/upload/v1760699084/kanika_a0irao.png"   
   title="Kanika punia"
-  role="Between Syntax error and success!"
-  description="From searching to riding innovation."
+  role="Final Year BTech Student @NITS"
+  description="Ex Summer Intern @Google || Upcomig Winter Intern @Uber"
   :links='[
     { "label": "GitHub", "url": "https://github.com/KanikaPunia119" },
     { "label": "LinkedIn", "url": "https://www.linkedin.com/in/kanika-punia-5b15a5210/" },
