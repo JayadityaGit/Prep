@@ -52,10 +52,9 @@
         <div class="role" v-if="role">{{ role }}</div>
       </div>
 
-      <hr class="divider" />
 
       <div class="bottom">
-        <p class="desc">{{ description }}</p>
+        <div class="dest2"><p class="desc">{{ description }}</p></div>
 
         <div class="links" v-if="links && links.length">
           <a
@@ -212,26 +211,11 @@ body[data-theme="light"] :root,
   border-radius: 50%;
 }
 
-.content {
-  position: absolute;
-  inset: 6px;
-  align-items: center;
-  border-radius: calc(var(--radius) - 4px);
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  background:
-    linear-gradient(-30deg, var(--card-bg-top), rgba(0,0,0,0)),
-    linear-gradient(to bottom, var(--card-bg-top), var(--card-bg-bottom));
-  box-shadow: var(--card-box-shadow), var(--card-inset-shadow);
-  color: var(--text-main);
-}
-
 /* outline svg */
 .outline-svg {
   position: absolute;
   inset: 0;
-  width: 100%;
+  width: 94%;
   height: 100%;
   z-index: 3;
   pointer-events: none;
@@ -240,29 +224,6 @@ body[data-theme="light"] :root,
 
 .outline-rect {
   filter: drop-shadow(0 6px 18px var(--outline-shadow-color));
-}
-
-/* top area */
-.top {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 36px 24px 12px 24px;
-  gap: 12px;
-}
-
-.badge {
-  display: inline-block;
-  background: var(--badge-bg);
-  color: var(--badge-text);
-  padding: 8px 14px;
-  border-radius: 999px;
-  font-weight: 700;
-  font-size: 12px;
-  letter-spacing: 0.6px;
-  text-transform: uppercase;
-  border: 1px solid var(--badge-border);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02);
 }
 
 /* avatar container with glow */
@@ -321,6 +282,44 @@ body[data-theme="light"] :root,
   font-weight: 600;
 }
 
+.badge {
+  display: inline-block;
+  background: var(--badge-bg);
+  color: var(--badge-text);
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  border: 1px solid var(--badge-border);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02);
+}
+
+.content {
+  position: absolute;
+  inset: 6px;
+  align-items: center;
+  border-radius: calc(var(--radius) - 4px);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  background:
+    linear-gradient(-30deg, var(--card-bg-top), rgba(0,0,0,0)),
+    linear-gradient(to bottom, var(--card-bg-top), var(--card-bg-bottom));
+  box-shadow: var(--card-box-shadow), var(--card-inset-shadow);
+  color: var(--text-main);
+}
+/* top area */
+.top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 14px 9px 14px;
+  gap: 6px;
+  width:100%;
+}
+
 /* name & role */
 .name {
   margin: 6px 0 0 0;
@@ -348,15 +347,14 @@ body[data-theme="light"] :root,
 }
 
 .bottom {
-  position: absolute;
-  top: 76%;
-  z-index: 5;
-  padding: 18px 28px 20px 28px;
+ position: relative;
+  margin-top: auto;           /* pushes it to the bottom */
+  width: 100%;
+  padding: 14px 28px 22px;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  flex: 1 1 auto;
+  justify-content: center;    /* center children horizontally */
   align-items: center;
+  flex-direction:column;
 }
 
 .desc {
@@ -364,7 +362,7 @@ body[data-theme="light"] :root,
   color: var(--desc-muted);
   font-size: 14px;
   line-height: 1.6;
-  text-align: left;
+  text-align: center;
 }
 
 /* links row */
