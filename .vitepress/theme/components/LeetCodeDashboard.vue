@@ -608,7 +608,7 @@ onMounted(loadMarkdown)
   background: var(--vp-c-bg-soft, #161b22);
   border: 1px solid var(--vp-c-divider, #30363d);
   border-radius: 12px;
-  padding: 1rem;
+  padding: 0.5rem;
   transition:
     transform 0.18s,
     border-color 0.18s,
@@ -627,6 +627,8 @@ onMounted(loadMarkdown)
   align-items: center;
   cursor: pointer;
   user-select: none;
+  padding: 1rem;
+  border-radius: 12px;
 }
 
 .topic-head:focus {
