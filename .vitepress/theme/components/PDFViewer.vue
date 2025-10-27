@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
 
 const props = defineProps({
   resources: {
@@ -12,8 +12,10 @@ const props = defineProps({
 const showModal = ref(false)
 const currentPdf = ref(null)
 const searchQuery = ref('')
-const sortBy = ref('default') // default, name, recent
-const viewMode = ref('table') // table or grid
+const sortBy = ref('default')
+const viewMode = ref('table')
+const isFullscreen = ref(false)
+const modalContainer = ref(null)
 
 const openPdf = (resource) => {
   currentPdf.value = resource
@@ -22,8 +24,12 @@ const openPdf = (resource) => {
 }
 
 const closeModal = () => {
+  if (isFullscreen.value) {
+    exitFullscreen()
+  }
   showModal.value = false
   currentPdf.value = null
+  isFullscreen.value = false
   document.body.style.overflow = 'auto'
 }
 
@@ -37,25 +43,86 @@ const getDownloadUrl = (fileId) => {
 
 const filteredResources = computed(() => {
   let filtered = [...props.resources]
-
-  // Search filter
   if (searchQuery.value) {
     filtered = filtered.filter((resource) =>
       resource.name.toLowerCase().includes(searchQuery.value.toLowerCase()),
     )
   }
-
-  // Sort
   if (sortBy.value === 'name') {
     filtered.sort((a, b) => a.name.localeCompare(b.name))
   }
-
   return filtered
 })
 
 const clearSearch = () => {
   searchQuery.value = ''
 }
+
+const toggleFullscreen = () => {
+  if (!isFullscreen.value) {
+    enterFullscreen()
+  } else {
+    exitFullscreen()
+  }
+}
+
+const enterFullscreen = () => {
+  const element = modalContainer.value
+
+  if (element.requestFullscreen) {
+    element.requestFullscreen()
+  } else if (element.webkitRequestFullscreen) {
+    // Safari
+    element.webkitRequestFullscreen()
+  } else if (element.mozRequestFullScreen) {
+    // Firefox
+    element.mozRequestFullScreen()
+  } else if (element.msRequestFullscreen) {
+    // IE/Edge
+    element.msRequestFullscreen()
+  }
+
+  isFullscreen.value = true
+}
+
+const exitFullscreen = () => {
+  if (document.exitFullscreen) {
+    document.exitFullscreen()
+  } else if (document.webkitExitFullscreen) {
+    document.webkitExitFullscreen()
+  } else if (document.mozCancelFullScreen) {
+    document.mozCancelFullScreen()
+  } else if (document.msExitFullscreen) {
+    document.msExitFullscreen()
+  }
+
+  isFullscreen.value = false
+}
+
+const handleFullscreenChange = () => {
+  const isCurrentlyFullscreen = !!(
+    document.fullscreenElement ||
+    document.webkitFullscreenElement ||
+    document.mozFullScreenElement ||
+    document.msFullscreenElement
+  )
+
+  isFullscreen.value = isCurrentlyFullscreen
+}
+
+onMounted(() => {
+  document.addEventListener('fullscreenchange', handleFullscreenChange)
+  document.addEventListener('webkitfullscreenchange', handleFullscreenChange)
+  document.addEventListener('mozfullscreenchange', handleFullscreenChange)
+  document.addEventListener('MSFullscreenChange', handleFullscreenChange)
+})
+
+onBeforeUnmount(() => {
+  document.removeEventListener('fullscreenchange', handleFullscreenChange)
+  document.removeEventListener('webkitfullscreenchange', handleFullscreenChange)
+  document.removeEventListener('mozfullscreenchange', handleFullscreenChange)
+  document.removeEventListener('MSFullscreenChange', handleFullscreenChange)
+})
 </script>
 
 <template>
@@ -324,10 +391,50 @@ const clearSearch = () => {
   <!-- Modal -->
   <Transition name="modal">
     <div v-if="showModal" class="modal-overlay" @click="closeModal">
-      <div class="modal-container" @click.stop>
+      <div
+        ref="modalContainer"
+        class="modal-container"
+        @click.stop
+        :class="{ fullscreen: isFullscreen }"
+      >
         <div class="modal-header">
           <h3>{{ currentPdf?.name }}</h3>
           <div class="modal-actions">
+            <!-- Fullscreen button -->
+            <button
+              class="btn-icon"
+              @click="toggleFullscreen"
+              :title="isFullscreen ? 'Exit Fullscreen' : 'Fullscreen'"
+            >
+              <svg
+                v-if="!isFullscreen"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"
+                ></path>
+              </svg>
+              <svg
+                v-else
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"
+                ></path>
+              </svg>
+            </button>
+
+            <!-- Download button -->
             <a
               :href="getDownloadUrl(currentPdf?.fileId)"
               class="btn-icon"
@@ -348,6 +455,7 @@ const clearSearch = () => {
               </svg>
             </a>
 
+            <!-- Close button -->
             <button
               class="btn-icon btn-close"
               @click="closeModal"
@@ -793,6 +901,20 @@ const clearSearch = () => {
   overflow: hidden;
 }
 
+/* Fullscreen styles */
+.modal-container.fullscreen,
+.modal-container:fullscreen,
+.modal-container:-webkit-full-screen,
+.modal-container:-moz-full-screen,
+.modal-container:-ms-fullscreen {
+  width: 100vw !important;
+  height: 100vh !important;
+  max-width: 100vw !important;
+  max-height: 100vh !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+}
+
 .modal-header {
   display: flex;
   justify-content: space-between;
@@ -800,6 +922,7 @@ const clearSearch = () => {
   padding: 20px 24px;
   background: var(--vp-c-bg-soft);
   border-bottom: 1px solid var(--vp-c-divider);
+  flex-shrink: 0;
 }
 
 .modal-header h3 {
@@ -807,13 +930,17 @@ const clearSearch = () => {
   color: var(--vp-c-text-1);
   font-size: 18px;
   font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: calc(100% - 150px);
 }
 
 .modal-actions {
   display: flex;
   gap: 8px;
+  flex-shrink: 0;
 }
-
 .btn-icon {
   display: flex;
   align-items: center;
