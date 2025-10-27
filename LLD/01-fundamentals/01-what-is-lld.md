@@ -52,6 +52,13 @@ graph TD
 
 > ### 1. Classes and Objects
 
+<CodeTabs :languages="[
+  { name: 'C++', slot: 'cpp' },
+  { name: 'Java', slot: 'java' }
+]">
+
+<template #java>
+
 ```java
 // Example: User class design
 public class User {
@@ -84,7 +91,66 @@ public class User {
 }
 ```
 
+</template>
+
+<template #cpp>
+
+```cpp
+#include <string>
+#include <regex>
+
+enum class Permission {
+    READ, WRITE, EXECUTE
+};
+
+class UserRole {
+public:
+    bool hasPermission(Permission permission) {
+        // Implement role-based permissions
+        return true;
+    }
+};
+
+class User {
+private:
+    std::string userId;
+    std::string username;
+    std::string email;
+    UserRole role;
+
+    bool isValidEmail(const std::string &email) {
+        std::regex pattern(R"((\w+)(\.{0,1})(\w*)@(\w+)\.(\w+))");
+        return std::regex_match(email, pattern);
+    }
+
+public:
+    User(std::string id, std::string uname, std::string mail, UserRole r)
+        : userId(id), username(uname), email(mail), role(r) {}
+
+    bool hasPermission(Permission permission) {
+        return role.hasPermission(permission);
+    }
+
+    void updateProfile(const std::string &newEmail) {
+        if (isValidEmail(newEmail)) {
+            email = newEmail;
+        }
+    }
+};
+```
+
+</template>
+
+</CodeTabs>
+
 > ### 2. Interfaces and Abstractions
+
+<CodeTabs :languages="[
+  { name: 'C++', slot: 'cpp' },
+  { name: 'Java', slot: 'java' }
+]">
+
+<template #java>
 
 ```java
 // Interface defining contract
@@ -115,6 +181,52 @@ public class CreditCardProcessor implements PaymentProcessor {
     }
 }
 ```
+
+</template>
+
+<template #cpp>
+
+```cpp
+#include <string>
+
+enum class PaymentStatus { COMPLETED, PENDING, FAILED };
+
+class PaymentRequest {};
+class PaymentResult {
+public:
+    bool success;
+    std::string message;
+
+    PaymentResult(bool s, const std::string &msg) : success(s), message(msg) {}
+};
+
+class PaymentProcessor {
+public:
+    virtual PaymentResult processPayment(const PaymentRequest &request) = 0;
+    virtual bool refundPayment(const std::string &transactionId) = 0;
+    virtual PaymentStatus getPaymentStatus(const std::string &transactionId) = 0;
+    virtual ~PaymentProcessor() = default;
+};
+
+class CreditCardProcessor : public PaymentProcessor {
+public:
+    PaymentResult processPayment(const PaymentRequest &request) override {
+        return PaymentResult(true, "Transaction successful");
+    }
+
+    bool refundPayment(const std::string &transactionId) override {
+        return true;
+    }
+
+    PaymentStatus getPaymentStatus(const std::string &transactionId) override {
+        return PaymentStatus::COMPLETED;
+    }
+};
+```
+
+</template>
+
+</CodeTabs>
 
 > ### 3. Class Relationships
 
@@ -285,6 +397,13 @@ Let's see how LLD applies to a shopping cart:
 
 > ### LLD Approach
 
+<CodeTabs :languages="[
+{ name: 'C++', slot: 'cpp' },
+{ name: 'Java', slot: 'java' },
+]">
+
+<template #java>
+
 ```java
 // Main entities identified
 public class ShoppingCart {
@@ -338,6 +457,113 @@ public class PercentageDiscount implements DiscountStrategy {
     }
 }
 ```
+
+</template>
+
+<template #cpp>
+
+```cpp
+#include <vector>
+#include <algorithm>
+
+class Product {
+private:
+    std::string id;
+    double price;
+
+public:
+    Product(std::string pid, double p) : id(pid), price(p) {}
+    std::string getId() const { return id; }
+    double getPrice() const { return price; }
+};
+
+class DiscountStrategy {
+public:
+    virtual double applyDiscount(double amount) = 0;
+    virtual ~DiscountStrategy() = default;
+};
+
+class PercentageDiscount : public DiscountStrategy {
+private:
+    double percentage;
+
+public:
+    PercentageDiscount(double p) : percentage(p) {}
+
+    double applyDiscount(double amount) override {
+        return amount * (1 - percentage / 100.0);
+    }
+};
+
+class CartItem {
+private:
+    Product product;
+    int quantity;
+
+public:
+    CartItem(Product p, int q) : product(p), quantity(q) {}
+
+    double getSubtotal() const {
+        return product.getPrice() * quantity;
+    }
+
+    const Product &getProduct() const {
+        return product;
+    }
+
+    void updateQuantity(int q) { quantity = q; }
+    int getQuantity() const { return quantity; }
+};
+
+class ShoppingCart {
+private:
+    std::string cartId;
+    std::string userId;
+    std::vector<CartItem> items;
+    DiscountStrategy *discountStrategy;
+
+    CartItem* findItem(const std::string &productId) {
+        for (auto &item : items) {
+            if (item.getProduct().getId() == productId)
+                return &item;
+        }
+        return nullptr;
+    }
+
+public:
+    ShoppingCart(std::string cid, std::string uid, DiscountStrategy *ds)
+        : cartId(cid), userId(uid), discountStrategy(ds) {}
+
+    void addItem(const Product &product, int quantity) {
+        CartItem *existing = findItem(product.getId());
+        if (existing) {
+            existing->updateQuantity(existing->getQuantity() + quantity);
+        } else {
+            items.emplace_back(product, quantity);
+        }
+    }
+
+    void removeItem(const std::string &productId) {
+        items.erase(
+            std::remove_if(items.begin(), items.end(),
+                [&](const CartItem &item) {
+                    return item.getProduct().getId() == productId;
+                }),
+            items.end());
+    }
+
+    double calculateTotal() {
+        double subtotal = 0;
+        for (auto &item : items)
+            subtotal += item.getSubtotal();
+
+        return discountStrategy->applyDiscount(subtotal);
+    }
+};
+```
+
+</template>
+</CodeTabs>
 
 ## 📚 Key Principles in LLD
 
