@@ -23,8 +23,6 @@ jobs:
 
                   plugin_lines: yes
                   plugin_followup: yes
-                  plugin_projects: yes
-                  plugin_projects_repositories: RAJ8664/Prep
 
                   base: header, activity, community, repositories, metadata
                   config_order: base.header, base.activity, base.community, base.repositories, base.metadata
