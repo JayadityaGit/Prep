@@ -45,11 +45,11 @@
 ![alt text](./pics/image.png)
 </div>
 
- * 📺 Reference Video
+* 📺 Reference Video
 
 Confused? No worries - this video will clear everything up in seconds-
 
-➡️ [Reference Video on YouTube](https://www.youtube.com/watch?v=YOUR_VIDEO_LINK)
+➡️ [Reference Video on YouTube](https://www.youtube.com/watch?v=KDo_789WlrY)
 
 
 ---
@@ -101,7 +101,18 @@ Confused? No worries - this video will clear everything up in seconds-
   point with only two devices on either
   side of it.
 
+* 📺 Reference Video
+
+Confused? No worries - this video will clear everything up in seconds-
+
+➡️ [Reference Video on YouTube](https://www.youtube.com/watch?v=zbqrNg4C98U)
+
+
 ---
+
+---
+
+
 
 > ### Categories of Networks
 
