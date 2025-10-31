@@ -1,4 +1,4 @@
-> ### Author : Anil Kumar
+> ### Author : Anil Kumar CSE
 
 # <h1 align="center"> Computer Network </h1>
 
@@ -43,8 +43,16 @@
 <div align = "center">
 
 ![alt text](./pics/image.png)
-
 </div>
+
+ * 📺 Reference Video
+
+Confused? No worries - this video will clear everything up in seconds-
+
+➡️ [Reference Video on YouTube](https://www.youtube.com/watch?v=YOUR_VIDEO_LINK)
+
+
+---
 
 - type of connection between them : point to point, multipoint
 
