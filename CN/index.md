@@ -110,8 +110,6 @@ Confused? No worries - this video will clear everything up in seconds-
 
 ---
 
----
-
 
 
 > ### Categories of Networks
@@ -281,6 +279,12 @@ Confused? No worries - this video will clear everything up in seconds-
 
 - **Network Virtual Terminal(NVT)**:NVT is a universal standard text format in Telnet, acting like a common language so different computers can talk without worrying about their internal representation.
 - Some service also there like file transfer ,mail service.
+
+* 📺 Reference Video
+
+Confused? No worries - this video will clear everything up in seconds-
+
+➡️ [Reference Video on YouTube](https://www.youtube.com/watch?v=vv4y_uOneC0)
 
 ---
 
