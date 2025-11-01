@@ -22,7 +22,7 @@ A comprehensive, well-organized collection of notes, code implementations, solut
 
 ## 🌐 Live Website
 
-Visit the live documentation: [https://raj8664.github.io/Prep](https://raj8664.github.io/Prep)
+<a href="https://raj8664.github.io/Prep" target="_blank"> 👉 Dive into Prep</a>
 
 ---
 
