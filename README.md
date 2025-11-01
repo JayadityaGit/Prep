@@ -95,7 +95,7 @@ Special thanks to:
 
 <div align = "center">
 
-<img src="metrics.plugin.people.repository.svg" alt="repo-info">
+<img src="./metrics.plugin.people.repository.svg" alt="repo-info">
 
 </div>
 
