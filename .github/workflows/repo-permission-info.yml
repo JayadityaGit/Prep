@@ -1,0 +1,24 @@
+name: Licenses and permissions
+
+on:
+    workflow_dispatch:
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        permissions:
+            contents: write
+
+        steps:
+            - name: Licenses and permissions
+              uses: lowlighter/metrics@latest
+              with:
+                  filename: metrics.plugin.licenses.svg
+                  token: ${{ secrets.METRIC_TOKEN }}
+                  base: ''
+                  template: repository
+                  user: raj8664
+                  repo: Prep
+                  plugin_licenses: yes
+                  plugin_licenses_setup: bash -c '[[ -f package.json ]] && npm ci || true'
+                  output_action: commit
