@@ -10,21 +10,24 @@ on:
 jobs:
     build:
         runs-on: ubuntu-latest
+        permissions:
+            contents: write
+
         steps:
             - name: Contributors by categories
               uses: lowlighter/metrics@latest
               with:
-                  filename: metrics.plugin.contributors.categories.svg
                   token: ${{ secrets.METRIC_TOKEN }}
-                  base: ''
-                  template: repository
                   user: raj8664
                   repo: Prep
+                  template: repository
+                  base: ''
+                  filename: metrics.plugin.contributors.categories.svg
                   plugin_contributors: yes
                   plugin_contributors_sections: categories
                   plugin_contributors_categories: |
                       {
-                        "🧩 Plugins / 🖼️ templates":["source/plugins/**", "source/templates/**"],
-                        "📚 Documentation":["README.md", "**/README.md", "**/metadata.yml"],
-                        "💻 Code (other)":["source/**", "Dockerfile"]
+                        "🧩 Plugins / 🖼️ templates": ["source/plugins/**", "source/templates/**"],
+                        "📚 Documentation": ["README.md", "**/README.md", "**/metadata.yml"],
+                        "💻 Code (other)": ["source/**", "Dockerfile"]
                       }
