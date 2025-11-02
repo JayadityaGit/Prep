@@ -76,6 +76,7 @@
     { "label": "Leetcode", "url": "https://leetcode.com/u/NICK_EL_03/" },
     { "label": "MonkeyType", "url" :"https://monkeytype.com/profile/NICK_EL_03"},
     { "label": "Codeforces", "url" :"https://codeforces.com/profile/KRISHN-ick"},
+    { "label": "Matiks", "url" :"https://www.matiks.com/profile/nikhilsahani"},
   ]' 
 />
 
