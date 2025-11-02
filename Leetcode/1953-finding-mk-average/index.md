@@ -154,8 +154,7 @@ public:
             right.erase(it);
             return;
         }
-        else
-        {
+        else {
             auto rit=right.begin();
             mid.insert(*rit);
             sum+=*rit;
@@ -167,8 +166,7 @@ public:
             mid.erase(it);
             return;
         }
-        else
-        {
+        else {
             auto mit=mid.begin();
             left.insert(*mit);
             sum-=*mit;
