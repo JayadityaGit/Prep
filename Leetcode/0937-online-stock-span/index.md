@@ -97,15 +97,12 @@ class StockSpanner {
 ```cpp
 class StockSpanner {
 public:
-    //vector<int>prices;
     stack<pair<int , int>>st;
     int ind;
     StockSpanner() {
         ind = -1;
     }
-    
     int next(int price) {
-        //OPTIMAL
         ind += 1 ;
         while(!st.empty() && st.top().first <= price) {
             st.pop();
@@ -117,19 +114,8 @@ public:
         else {
             ans = ind - st.top().second;
         }
-
         st.push({price , ind});
         return ans;
-        
-        //BRUTE
-        // prices.push_back(price);
-        // int n = prices.size();
-        // int count = 0 ;
-        // for(int i = n - 1 ; i >= 0 ; i--) {
-        //     if(prices[i] > price) break;
-        //     count++;
-        // }
-        // return count;
     }
 };
 
