@@ -116,7 +116,58 @@ class FrontMiddleBackQueue {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+class FrontMiddleBackQueue {
+public:
+    vector<int>v;
+    FrontMiddleBackQueue() {
+        v = {};
+    }
+    
+    void pushFront(int val) {
+        v.insert(v.begin() , val);
+    }
+    
+    void pushMiddle(int val) {
+        v.insert(v.begin() + v.size() / 2 , val);
+    }
+    
+    void pushBack(int val) {
+        v.push_back(val);
+    }
+    
+    int popFront() {
+        if(v.empty()) return -1;
+        int val = v.front();
+        v.erase(v.begin());
+        return val;
+    }
+    
+    int popMiddle() {
+        if(v.empty()) return -1;
+        int mid = (v.size() - 1) / 2;
+        int val = v[mid];
+        v.erase(v.begin() + mid);
+        return val;
+    }
+    
+    int popBack() {
+        if(v.empty()) return -1;
+        int val = v.back();
+        v.pop_back();
+        return val;
+    }
+};
+
+/**
+ * Your FrontMiddleBackQueue object will be instantiated and called as such:
+ * FrontMiddleBackQueue* obj = new FrontMiddleBackQueue();
+ * obj->pushFront(val);
+ * obj->pushMiddle(val);
+ * obj->pushBack(val);
+ * int param_4 = obj->popFront();
+ * int param_5 = obj->popMiddle();
+ * int param_6 = obj->popBack();
+ */
 ```
 
 </template>
