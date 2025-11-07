@@ -23,10 +23,10 @@ jobs:
           script: |
             const prNumber = context.payload.pull_request
               ? context.payload.pull_request.number
-              : core.getInput('pr_number');
+              : inputs.pr_number; // ✅ FIXED
 
             if (!prNumber) {
-              core.setFailed('No pull request number provided.');
+              core.setFailed('❌ No pull request number provided.');
               return;
             }
 
