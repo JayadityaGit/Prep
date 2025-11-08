@@ -17,8 +17,36 @@
 <div align="center">
 
 <PDFViewer :resources="[
-  { name: 'ALL BOOKS', fileId: '1LLC71sj2RQnvGyQvA7Vfy1JmdfI8BHsg' }
+  { name: 'OS Syllabus', fileId: '1X8MvwRGq2zSTEN3-86VeWGfTALhA2mwp', type: 'pdf' },
+  { name: 'TUT2', fileId: '1A-seLpeAoNPKrI00ZRX87O3nYK9F39yn', type: 'vdo' },
+  { name: 'Assignment 1', fileId: '1WLpxvSwMQ76S1yI-zTV8s8hy3ox12qNfEjP536dF9EY', type: 'doc' },
+  { name: 'Assignment 2', fileId: '15MA7sKOVo6vBXv9B06mPA0c_OBexIsn_Y98qJ6d9pJ4', type: 'doc' },
+  { name: 'Assignment 3', fileId: '1gJEtQe26SHQqq8LTXPtiyBVKjhWv2lNC', type: 'pdf' },
+  { name: 'Books', fileId: '1ceK859O_-1f8epbmuQs7QFl6utnSp3Ch', type: 'pdf' },
+  { name: 'Linux Kernel Development.pdf', fileId: '1ne4ZsL2ijryKmK5AFNy8zAD4s-SZ5jow', type: 'pdf' },
+  { name: 'Operating System Concepts.pdf', fileId: '14Ts0dvoua9Y_ZYtvMSlXmw6FDucP-kUc', type: 'pdf' },
+  { name: 'Operating systems_internals and design principles.pdf', fileId: '11Fkd16rwUZEp3tqtiekTokFaLru04NPO', type: 'pdf' },
+  { name: 'OS Note till Process Sync (Critical Section).pdf', fileId: '1qaZsafZfRNEg2yXc9xNGK3g_NPh4tfyi', type: 'pdf' },
+  { name: 'lec 1', fileId: '1k3nxZ0dNOKpMuwp4gm63Gpike6KKyG-1', type: 'pdf' },
+  { name: 'lec 2', fileId: '1sY8alDYk9kqaBcPrDOFmyf5Q-2N7DRjU', type: 'pdf' },
+  { name: 'lec 3', fileId: '16dM7EIXFIflN7ff9kg6nOCjfSSGybsp4', type: 'pdf' },
+  { name: 'lec 4', fileId: '1ATNUmHYl0RDhWyD-MrvfziZKYtUvOj40', type: 'pdf' },
+  { name: 'lec 5', fileId: '1PL5mgpqsjkUlrFWPjfGTE7OTffvECMGC', type: 'pdf' },
+  { name: 'lec 6', fileId: '1PpgDMG7_zmEY9x5m9DizQqrNUA4j1-OS', type: 'pdf' },
+  { name: 'lec 7', fileId: '1pM8EU96cCJqv1D1YcMo3rtsj6BMHvmgL', type: 'pdf' },
+  { name: 'lec 8', fileId: '1AbGxImJezGXhNyoOGAkWvYm2Dlpx2Sd8', type: 'pdf' },
+  { name: 'lec 9', fileId: '1Gr2M2F7WMZO4GjOPfMoh-e9UInfo0HSk', type: 'pdf' },
+  { name: 'lec 10', fileId: '1eYgIaoA49cw3iN5qG4uBjaIgH78JvwkK', type: 'pdf' },
+  { name: 'lec 11', fileId: '1au9Y5r8UziZhoLJtQ2KUPhCvFOFwETKj', type: 'pdf' },
+  { name: 'lec 12', fileId: '1uSndXbVAh4N4LJCmTJg99IxUPCdEQ1el', type: 'pdf' },
+  { name: 'lec 13', fileId: '1XZx-LnNyc-RQLxsllifOW-duRYcgHmpV', type: 'pdf' },
+  { name: 'lec 14', fileId: '1VphlgUxMXFd_xxPHZklwtmLdpk_2KR0Y', type: 'pdf' },
+  { name: 'lec 15', fileId: '1tIoKJEpFMx-5w90uwboIASO6aPBjtAo3', type: 'pdf' },
+  { name: 'lec 16', fileId: '1CjPTy8E2Mj5vxFMbBEeN19vUuwYBPRe0', type: 'pdf' },
+  { name: 'lec 17', fileId: '1mtT7ZKdfkvR1dM83mR80LUta9MT1lVYX', type: 'pdf' },
+  { name: 'lec 18', fileId: '1cyz7_XuTeQ4Jr4hZc_urUk6jRyeeQ9Ex', type: 'pdf' }
 ]" />
+
 
 </div>
 
