@@ -81,7 +81,35 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+class Solution {
+private:
+    bool dfs(int u , int v , map<int , vector<int>>& adj , vector<bool>& vis){
+        vis[u] = true;
+        if(u == v) return true;
+        for(auto &it : adj[u]){
+            if(vis[it]) continue;
+            if(dfs(it , v , adj , vis)) return true;
+        }
+        return false;
+    }
+public:
+    vector<int> findRedundantConnection(vector<vector<int>>& edges) {
+        int n = edges.size();
+        map<int , vector<int>> adj;
+        for(int i = 0 ; i< n; i++){
+            vector<bool> vis(n , false);
+            int u = edges[i][0];
+            int v = edges[i][1];
+            if(adj.find(u) != adj.end() && adj.find(v) != adj.end()
+            && dfs(u , v , adj , vis)){
+                return edges[i];
+            }
+            adj[u].push_back(v);
+            adj[v].push_back(u);
+        }
+        return {};
+    }
+};
 ```
 
 </template>
