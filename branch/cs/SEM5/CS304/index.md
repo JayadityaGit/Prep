@@ -18,9 +18,9 @@
 
 <PDFViewer :resources="[
   { name: 'Software Engineering Syllabus', fileId: '1-seHhpj65Hm219VwVy6rO12gFYCtBzPF', type: 'pdf' },
-  { name: 'TUT 1 video', fileId: '1G_rUwknW1emzc2f05rXN0iHgl2Jq61bXHoyBhcuFHUY', type: 'vdo' },
-  { name: 'TUT 2 video', fileId: '1R8VvzaspNIdhubJJqwF6I69U1lrpRpl6QdE_HWVyAQA', type: 'vdo' },
-  { name: 'TUT 3 video', fileId: '11TBswXfonXIuvUj2c16_psAd9fASdF5WajXGd-wjjk4', type: 'vdo' },
+  { name: 'TUT 1 video', fileId: '1dCvRXsoYmYs_cpkv6DjBySaWUz5x5j56', type: 'vdo' },
+  { name: 'TUT 2 video', fileId: '1fCfUAQb3DfGLXgQiKgvKcUnl_j78-toI', type: 'vdo' },
+  { name: 'TUT 3 video', fileId: '1tqCYbdkjDxRQU3J-wt6rM5vWkMkncmHJ', type: 'vdo' },
   { name: 'SE assignment', fileId: '12xmBI-YY5D31Q6PmouHXD_0HK4sRL6KNQxAZGodUU4Y', type: 'doc' },
   { name: 'Fundamentals of software engineering - Rajib Mall', fileId: '1CX5Q0a1nu29QtM4SQfMQX1M6R9j__ecn', type: 'pdf' },
   { name: 'SE Note till Mid Sem', fileId: '1icklChthGxlUIchcB0WMR9cdDVNFzLGE', type: 'pdf' },
