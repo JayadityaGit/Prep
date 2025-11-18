@@ -129,7 +129,75 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+class Solution {
+public:
+    string fractionAddition(string expression) {
+        string s;
+        if (expression[0] == '-')
+            s = expression;
+        else
+            s = "+" + expression;
+        int n = s.size();
+        vector<int> numerator;
+        vector<int> denominator;
+        int i = 0, j = 0;
+        while (i < n) {
+            i = j;
+            if (i >= n) break;
+            bool positive = true;
+            if (s[i] == '-') positive = false;
+            j++;
+            int dig = 0;
+            // parse numerator
+            while (j < n && s[j] != '/')
+                dig = dig * 10 + (s[j++] - '0');
+
+            if (positive) numerator.push_back(dig);
+            else numerator.push_back(-dig);
+            dig = 0;
+            j++; // skip '/'
+            // parse denominator
+            while (j < n && s[j] != '+' && s[j] != '-')
+                dig = dig * 10 + (s[j++] - '0');
+            denominator.push_back(dig);
+        }
+        int L = lcm(denominator);
+        long long sum = 0;
+        for (int x = 0; x < numerator.size(); x++)
+            sum += (long long)numerator[x] * L / denominator[x];
+        string ans = to_string(sum) + "/" + to_string(L);
+        return reduce(ans);
+    }
+
+private:
+    string reduce(const string& fraction) {
+        int slash = fraction.find('/');
+        int num = stoi(fraction.substr(0, slash));
+        int den = stoi(fraction.substr(slash + 1));
+        if (num == 0)
+            return "0/1";
+        int g = gcd(abs(num), abs(den));
+        num /= g;
+        den /= g;
+        if (den < 0) {
+            num = -num;
+            den = -den;
+        }
+        return to_string(num) + "/" + to_string(den);
+    }
+
+    int lcm(const vector<int>& numbers) {
+        long long result = 1;
+        for (int x : numbers)
+            result = (result * x) / gcd(result, x);
+        return (int)result;
+    }
+
+    long long gcd(long long a, long long b) {
+        if (b == 0) return a;
+        return gcd(b, a % b);
+    }
+};
 ```
 
 </template>

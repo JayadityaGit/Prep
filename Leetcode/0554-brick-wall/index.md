@@ -69,7 +69,24 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+class Solution {
+public:
+    int leastBricks(vector<vector<int>>& wall) {
+        unordered_map<long long, int> freq;
+        int res = 0;
+        for (const auto& row : wall) {
+            long long sum = 0;
+            for (int i = 0; i < row.size(); i++) {
+                sum += row[i];
+                if (i != row.size() - 1) {  // don't count the last edge
+                    freq[sum]++;
+                    res = max(res, freq[sum]);
+                }
+            }
+        }
+        return wall.size() - res;
+    }
+};
 ```
 
 </template>

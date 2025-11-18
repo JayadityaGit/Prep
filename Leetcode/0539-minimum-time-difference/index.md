@@ -55,7 +55,30 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+class Solution {
+public:
+    int findMinDifference(vector<string>& timePoints) {
+        int n = timePoints.size();
+        vector<int> minutesList;
+        minutesList.reserve(n);
+        for (const string& time : timePoints) {
+            int hours = stoi(time.substr(0, 2));
+            int minutes = stoi(time.substr(3, 2));
+            int totalMinutes = hours * 60 + minutes;
+            minutesList.push_back(totalMinutes);
+        }
+        sort(minutesList.begin(), minutesList.end());
+        int minDiff = INT_MAX;
+        for (int i = 1; i < minutesList.size(); i++) {
+            int diff = minutesList[i] - minutesList[i - 1];
+            minDiff = min(minDiff, diff);
+        }
+        // Circular difference (last to first across midnight)
+        int circularDiff = 1440 - minutesList.back() + minutesList[0];
+        minDiff = min(minDiff, circularDiff);
+        return minDiff;
+    }
+};
 ```
 
 </template>

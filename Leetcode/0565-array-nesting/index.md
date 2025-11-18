@@ -90,7 +90,39 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+class Solution {
+public:
+    vector<vector<int>> adj;
+    vector<int> dp;
+    int arrayNesting(vector<int>& nums) {
+        int n = nums.size();
+        adj.assign(n + 2, vector<int>());
+        dp.assign(n + 1, 0);
+        for (int i = 0; i < n; i++) {
+            if (i == nums[i]) continue;
+            adj[i].push_back(nums[i]);
+        }
+        vector<int> vis(n + 1, 0);
+        for (int i = 0; i < n; i++) {
+            if (vis[i] == 0)
+                dfs(i, -1, vis);
+        }
+        int maxi = 0;
+        for (int i = 0; i < n; i++)
+            maxi = max(maxi, dp[i]);
+        return maxi + 1;
+    }
+
+    void dfs(int u, int par, vector<int>& vis) {
+        vis[u] = 1;
+        for (int v : adj[u]) {
+            if (vis[v] == 0) {
+                dfs(v, u, vis);
+                dp[u] = max(dp[u], 1 + dp[v]);
+            }
+        }
+    }
+};
 ```
 
 </template>

@@ -78,7 +78,31 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+class Solution {
+public:
+    int ans;
+    int countArrangement(int n) {
+        ans = 0;
+        vector<int> vis(n + 1, 0);
+        solve(vis, n, 1);
+        return ans;
+    }
+    void solve(vector<int>& vis, int n, int curr_num) {
+        if (curr_num == n + 1) {
+            ans++;
+            return;
+        }
+        for (int i = 1; i <= n; i++) {
+            if (vis[i] == 0) {
+                if (curr_num % i == 0 || i % curr_num == 0) {
+                    vis[i] = 1;
+                    solve(vis, n, curr_num + 1);
+                    vis[i] = 0;
+                }
+            }
+        }
+    }
+};
 ```
 
 </template>

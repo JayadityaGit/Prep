@@ -84,7 +84,45 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+class Solution {
+public:
+    string findLongestWord(string s, vector<string>& dictionary) {
+        int n = s.size();
+        vector<int> flag(dictionary.size(), 0);
+        for (int i = 0; i < dictionary.size(); i++) {
+            if (canForm(s, dictionary[i]))
+                flag[i] = 1;
+        }
+        int maxi = 0;
+        for (int i = 0; i < dictionary.size(); i++) {
+            if (flag[i] == 1)
+                maxi = max(maxi, (int)dictionary[i].size());
+        }
+        vector<string> res;
+        for (int i = 0; i < dictionary.size(); i++) {
+            if (flag[i] == 1 && dictionary[i].size() == maxi)
+                res.push_back(dictionary[i]);
+        }
+        sort(res.begin(), res.end());
+        if (res.empty())
+            return "";
+        return res[0];
+    }
+private:
+    bool canForm(const string& s, const string& t) {
+        int n = s.size(), m = t.size();
+        int i = 0, j = 0;
+        while (i < n && j < m) {
+            if (s[i] == t[j]) {
+                i++;
+                j++;
+            } else {
+                i++;
+            }
+        }
+        return j == m;
+    }
+};
 ```
 
 </template>

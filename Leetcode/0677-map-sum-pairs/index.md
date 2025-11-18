@@ -83,7 +83,27 @@ class MapSum {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+class MapSum {
+public:
+    unordered_map<string, int> mp;
+    MapSum() {
+        // nothing needed, mp initializes itself
+    }
+    void insert(string key, int val) {
+        mp[key] = val;
+    }
+    int sum(string prefix) {
+        int total = 0;
+        for (const auto& it : mp) {
+            const string& key = it.first;
+            if (key.rfind(prefix, 0) == 0) {
+                // rfind(prefix, 0) == 0 → key.startsWith(prefix)
+                total += it.second;
+            }
+        }
+        return total;
+    }
+};
 ```
 
 </template>

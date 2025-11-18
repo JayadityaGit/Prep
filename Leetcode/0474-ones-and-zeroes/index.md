@@ -80,7 +80,31 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+class Solution {
+public:
+    int findMaxForm(vector<string>& strs, int max_zero, int max_one) {
+        int n = strs.size();
+        vector<vector<vector<int>>> dp(n + 1, vector<vector<int>>(max_zero + 1, vector<int>(max_one + 1, -1)));
+        return solve(0, strs, 0, 0, dp, max_zero, max_one);
+    }
+
+    int solve(int ind, vector<string>& arr, int zero, int one,
+              vector<vector<vector<int>>>& dp, int max_zero, int max_one) {
+        if (ind >= arr.size()) return 0;
+        if (dp[ind][zero][one] != -1) return dp[ind][zero][one];
+        int count0 = 0, count1 = 0;
+        for (char c : arr[ind]) {
+            if (c == '0') count0++;
+            else count1++;
+        }
+        int take = 0, skip = 0;
+        if (zero + count0 <= max_zero && one + count1 <= max_one) {
+            take = 1 + solve(ind + 1, arr, zero + count0, one + count1, dp, max_zero, max_one);
+        }
+        skip = solve(ind + 1, arr, zero, one, dp, max_zero, max_one);
+        return dp[ind][zero][one] = max(take, skip);
+    }
+};
 ```
 
 </template>

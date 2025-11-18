@@ -105,7 +105,71 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+class Solution {
+public:
+    vector<double> medianSlidingWindow(vector<int>& nums, int k) {
+        int n = nums.size();
+        auto comp = [&](int a, int b) {
+            if (nums[a] != nums[b])
+                return nums[a] < nums[b];
+            return a < b;
+        };
+        // maxSet stores the smaller half (reversed comparator)
+        multiset<int, decltype(comp)> maxSet(comp), minSet(comp);
+
+        vector<double> res;
+        res.reserve(n - k + 1);
+
+        // initial k insertion
+        for (int i = 0; i < k; i++) {
+            maxSet.insert(i);
+            auto it = prev(maxSet.end());
+            minSet.insert(*it);
+            maxSet.erase(it);
+            if (minSet.size() > maxSet.size()) {
+                auto it2 = minSet.begin();
+                maxSet.insert(*it2);
+                minSet.erase(it2);
+            }
+        }
+
+        res.push_back(getMedian(minSet, maxSet, nums));
+        int start = 0;
+        for (int i = k; i < n; i++) {
+            // remove outgoing index
+            auto it1 = minSet.find(start);
+            if (it1 != minSet.end()) minSet.erase(it1);
+            else {
+                auto it2 = maxSet.find(start);
+                if (it2 != maxSet.end()) maxSet.erase(it2);
+            }
+            start++;
+            // insert new index
+            maxSet.insert(i);
+            auto it3 = prev(maxSet.end());
+            minSet.insert(*it3);
+            maxSet.erase(it3);
+            if (minSet.size() > maxSet.size()) {
+                auto it4 = minSet.begin();
+                maxSet.insert(*it4);
+                minSet.erase(it4);
+            }
+            res.push_back(getMedian(minSet, maxSet, nums));
+        }
+        return res;
+    }
+
+    double getMedian(multiset<int, function<bool(int,int)>>& minSet,
+                     multiset<int, function<bool(int,int)>>& maxSet,
+                     vector<int>& nums) {
+        if (minSet.size() == maxSet.size()) {
+            double a = nums[*maxSet.begin()];
+            double b = nums[*minSet.begin()];
+            return (a + b) / 2.0;
+        }
+        return nums[*maxSet.begin()] * 1.0;
+    }
+};
 ```
 
 </template>
