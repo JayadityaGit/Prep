@@ -1,9 +1,3 @@
-<div align = "center">
-
-<img  src = "https://res.cloudinary.com/dzgoq3ikq/image/upload/v1763727602/ele-copy-removebg-preview_yuhev5.png"/>
-
-</div>
-
 <p align="center">
   <a href="https://raj8664.github.io/Prep"><img src="https://img.shields.io/badge/GitHub%20Pages-Live-brightgreen" alt="GitHub Pages"></a>
   <a href="contribution.md"><img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg" alt="Contributions Welcome"></a>
@@ -13,6 +7,12 @@
   <img src="https://img.shields.io/github/contributors/RAJ8664/Prep" alt="GitHub contributors">
   <img src="https://img.shields.io/github/commit-activity/m/RAJ8664/Prep" alt="GitHub commit activity">
 </p>
+
+<div align = "center">
+
+<img  src = "https://res.cloudinary.com/dzgoq3ikq/image/upload/v1763727602/ele-copy-removebg-preview_yuhev5.png"/>
+
+</div>
 
 <p align="center">
 An open-source learning platform designed to guide you through your entire computer science journey. We bridge the gap between academic theory and real-world interviews by providing everything in one place: curated notes, previous year's questions (PYQs), LeetCode solutions, and authentic interview experiences from top tech companies.
