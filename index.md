@@ -2,7 +2,7 @@
 layout: home
 
 hero:
-    name: 'Prep Notes'
+    name: 'ElevateU'
     text: 'All-in-One Hub to Master Computer Science'
     tagline: DSA, System Design, OS, DBMS, Networks & More
     actions:
