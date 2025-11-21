@@ -21,8 +21,10 @@ export default withMermaid(
         },
 
         themeConfig: {
-            logo: 'https://res.cloudinary.com/dzgoq3ikq/image/upload/v1763727602/ele-copy-removebg-preview_yuhev5.png',
-
+            logo: {
+                src: 'https://res.cloudinary.com/dzgoq3ikq/image/upload/v1763727602/ele-copy-removebg-preview_yuhev5.png',
+            },
+            siteTitle: false,
             nav: [
                 { text: '🏠 Home', link: '/' },
                 { text: '🎓 Academics', link: '/branch/' },

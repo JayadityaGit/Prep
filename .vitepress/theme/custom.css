@@ -518,3 +518,14 @@ table th a[href]:is([href*='./'], :has-text('Open'), :has-text('View')):hover {
 		gap: 5px;
 	}
 }
+
+/* Increase logo size by 20% */
+.VPNavBar .VPImage.logo {
+	transform: scale(1.8);
+	transform-origin: left center; /* keeps alignment clean */
+}
+
+/* Add spacing between logo and search bar */
+.VPNavBar .VPNavBarTitle {
+	margin-right: 85px; /* adjust value (px) to increase/decrease distance */
+}
