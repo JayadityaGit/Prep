@@ -29,6 +29,11 @@
 
 <div align="center">
 
+|  #  | Resource         |             Access             |
+| :-: | :--------------- | :----------------------------: |
+|  1  | **Mid Semester** | [📥 Open](./PYQ/Mid-Semester/) |
+|  2  | **End Semester** | [📥 Open](./PYQ/End-Semester/) |
+
 </div>
 
 ---

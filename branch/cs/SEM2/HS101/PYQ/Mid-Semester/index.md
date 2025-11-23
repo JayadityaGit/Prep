@@ -3,29 +3,18 @@
 </div>
 
 <CodeTabs :languages="[
-  { name: '2019-JUN', slot: '2019-JUN' },
-    {name : '2018-SEP', slot : '2018-SEP'},
+  { name: '2018-SEP', slot: '2018-SEP' },
 ]">
-
-<template #2019-JUN>
-
-<details style="margin-bottom: 5px; margin-top : 10px; border: 1px solid #ccc; border-radius: 5px; padding: 8px;">
-  <summary style="font-weight: bold; cursor: pointer; font-size: 1rem;">Click to view the Question Paper</summary>
-  <div align="center" style="margin-top: 10px;">
-    <img src="https://res.cloudinary.com/dywrfit3t/image/upload/v1763899882/Screenshot_23-Nov_17-40-58_5388_jvsdb0.png" 
-         alt="Question Paper" 
-         style="max-width: 90%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);" />
-</div>
-</details>
-
-</template>
 
 <template #2018-SEP>
 
 <details style="margin-bottom: 5px; margin-top : 10px; border: 1px solid #ccc; border-radius: 5px; padding: 8px;">
   <summary style="font-weight: bold; cursor: pointer; font-size: 1rem;">Click to view the Question Paper</summary>
   <div align="center" style="margin-top: 10px;">
-    <img src="https://res.cloudinary.com/dywrfit3t/image/upload/v1763900275/Screenshot_23-Nov_17-47-25_17846_cmthsi.png" 
+    <img src="https://res.cloudinary.com/dywrfit3t/image/upload/v1763901758/Screenshot_23-Nov_18-12-12_27102_qemc4a.png" 
+         alt="Question Paper" 
+         style="max-width: 90%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);" />
+    <img src="https://res.cloudinary.com/dywrfit3t/image/upload/v1763901755/Screenshot_23-Nov_18-12-20_17956_p5zznw.png" 
          alt="Question Paper" 
          style="max-width: 90%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);" />
 </div>
