@@ -1,12 +1,6 @@
-<div align="center">
+<div align = "center">
 
 # 📘 SEM 7 Resource Hub
-
-<div align="center" style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 10px;">
-  <img src="https://img.shields.io/badge/📚_Subjects-5-blue?style=flat&logo=bookstack" alt="Subjects Badge" />
-  <img src="https://img.shields.io/badge/🧪_Labs-3-green?style=flat&logo=flask" alt="Labs Badge" />
-  <img src="https://img.shields.io/badge/📝_PYQs-Mid%2FEnd-orange?style=flat&logo=googledocs" alt="PYQs Badge" />
-</div>
 
 </div>
 
@@ -54,42 +48,21 @@ _Core SEM 7 curriculum — Click to explore_
 
 <div align="center">
 
-|  Code   | Subject                                  |      Resources      |
-| :-----: | :--------------------------------------- | :-----------------: |
-| `CS201` | **Data Structures**                      | [📂 Open](./CS201/) |
-| `CS202` | **Discrete Structures**                  | [📂 Open](./CS202/) |
-| `EC221` | **Electronic Circuit and Switching**     | [📂 Open](./EC221/) |
-| `EE210` | **Microprocessors and Microcontrollers** | [📂 Open](./EE210/) |
-| `MA201` | **Mathematics-III**                      | [📂 Open](./MA201/) |
+|  Code   | Subject                                     |      Resources      |
+| :-----: | :------------------------------------------ | :-----------------: |
+| `CS401` | **Artificial Intelligence**                 | [📂 Open](./CS401/) |
+| `CS431` | **Machine Learning**                        | [📂 Open](./CS431/) |
+| `CS434` | **Cryptography and Security**               | [📂 Open](./CS434/) |
+| `CS437` | **Distributed System**                      | [📂 Open](./CS437/) |
+| `CS481` | **Web Technology**                          | [📂 Open](./CS481/) |
+| `CS486` | **Intro to Neural Network & Deep Learning** | [📂 Open](./CS486/) |
+| `HS402` | **Business Management**                     | [📂 Open](./HS402/) |
 
 </div>
 
 </details>
 
 ---
-
-<div align="center">
-
-## 🧪 Labs
-
-_Hands-on practical sessions_
-
-</div>
-
-<details open>
-<summary><b>🔽 View All Labs</b></summary>
-
-<div align="center">
-
-| Lab Code | Laboratory                                          |      Resources      |
-| :------: | :-------------------------------------------------- | :-----------------: |
-| `CS203`  | **Data Structure Laboratory**                       | [📂 Open](./CS203/) |
-| `EC222`  | **Electronic Circuit and Switching Laboratory**     | [📂 Open](./EC222/) |
-| `EE223`  | **Microprocessors and Microcontrollers Laboratory** | [📂 Open](./EE223/) |
-
-</div>
-
-</details>
 
 ---
 
