@@ -85,14 +85,32 @@ git checkout -b feature/YourFeatureName
 
 > 💡 **Tip:** Use descriptive branch names like `add-dijkstra-algorithm` or `fix-typo-readme`
 
-### Step 4️⃣ : Make Your Changes
+### Step 4️⃣ : Install Dependencies & Run Locally
+
+Before making changes, ensure you can run the project locally:
+
+1. **Install Dependencies:**
+
+   ```bash
+   npm install
+   ```
+
+2. **Run Development Server:**
+
+   ```bash
+   npm run docs:dev
+   ```
+
+   This will start a local server (usually at `http://localhost:5173`) where you can preview your changes in real-time.
+
+### Step 5️⃣ : Make Your Changes
 
 - ✏️ Add your content, code, or improvements
 - 🎯 Ensure your code follows the existing style
 - 💬 Add clear comments where necessary
 - 🧪 Test your changes thoroughly
 
-### Step 5️⃣ : Commit Your Changes
+### Step 6️⃣ : Commit Your Changes
 
 ```bash
 git add .
@@ -112,13 +130,13 @@ We follow a simple commit message structure:
 | `Docs:`   | Documentation changes                | `Docs: Update contributing guidelines`          |
 | `Style:`  | Formatting, missing semicolons, etc. | `Style: Reformat code with proper indentation`  |
 
-### Step 6️⃣ : Push to Your Fork
+### Step 7️⃣ : Push to Your Fork
 
 ```bash
 git push origin feature/YourFeatureName
 ```
 
-### Step 7️⃣ : Open a Pull Request
+### Step 8️⃣ : Open a Pull Request
 
 1. Go to the [original repository](https://github.com/RAJ8664/Prep)
 2. Click **"New Pull Request"**
