@@ -3,9 +3,26 @@
 </div>
 
 <CodeTabs :languages="[
+    { name: '2024-JUL-SUP', slot: '2024-JUL-SUP' },
     { name: '2023-NOV', slot: '2023-NOV' },
     { name: '2022-NOV', slot: '2022-NOV' },
 ]">
+
+<template #2024-JUL-SUP>
+
+<details style="margin-bottom: 5px; margin-top : 10px; border: 1px solid #ccc; border-radius: 5px; padding: 8px;">
+  <summary style="font-weight: bold; cursor: pointer; font-size: 1rem;">Click to view the Question Paper</summary>
+  <div align="center" style="margin-top: 10px;">
+    <img src="https://res.cloudinary.com/dywrfit3t/image/upload/v1764046477/Screenshot_25-Nov_10-24-16_3578_sxplku.png" 
+         alt="Question Paper" 
+         style="max-width: 90%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);" />
+    <img src="https://res.cloudinary.com/dywrfit3t/image/upload/v1764046477/Screenshot_25-Nov_10-24-23_29453_ekj9ez.png" 
+         alt="Question Paper" 
+         style="max-width: 90%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);" />
+</div>
+</details>
+
+</template>
 
 <template #2023-NOV>
 
