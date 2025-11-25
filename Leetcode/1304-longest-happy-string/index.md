@@ -189,7 +189,132 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    struct Pair {
+        char ch;
+        int freq;
+        Pair(char c, int f) : ch(c), freq(f) {}
+    };
+
+    struct sorting {
+        bool operator()(const Pair& a, const Pair& b) const {
+            return a.freq < b.freq; // max-heap behavior
+        }
+    };
+
+    string longestDiverseString(int a, int b, int c) {
+        priority_queue<Pair, vector<Pair>, sorting> pq;
+
+        if (a > 0) pq.push(Pair('a', a));
+        if (b > 0) pq.push(Pair('b', b));
+        if (c > 0) pq.push(Pair('c', c));
+
+        string ans = "";
+        int a_used = 0, b_used = 0, c_used = 0;
+
+        while (!pq.empty()) {
+            Pair current = pq.top();
+            pq.pop();
+
+            if (current.ch == 'a') {
+                if (a_used < 2) {
+                    ans += 'a';
+                    current.freq--;
+                    a_used++;
+                    b_used = c_used = 0;
+
+                    if (current.freq > 0) pq.push(current);
+                } else {
+                    if (pq.empty()) break;
+
+                    Pair current1 = pq.top();
+                    pq.pop();
+
+                    ans += current1.ch;
+                    current1.freq--;
+
+                    if (current1.ch == 'a') {
+                        a_used++; b_used = c_used = 0;
+                    } else if (current1.ch == 'b') {
+                        b_used++; a_used = c_used = 0;
+                    } else {
+                        c_used++; a_used = b_used = 0;
+                    }
+
+                    if (current.freq > 0) pq.push(current);
+                    if (current1.freq > 0) pq.push(current1);
+                }
+            }
+
+            else if (current.ch == 'b') {
+                if (b_used < 2) {
+                    ans += 'b';
+                    current.freq--;
+                    b_used++;
+                    a_used = c_used = 0;
+
+                    if (current.freq > 0) pq.push(current);
+                } else {
+                    if (pq.empty()) break;
+
+                    Pair current1 = pq.top();
+                    pq.pop();
+
+                    ans += current1.ch;
+                    current1.freq--;
+
+                    if (current1.ch == 'a') {
+                        a_used++; b_used = c_used = 0;
+                    } else if (current1.ch == 'b') {
+                        b_used++; a_used = c_used = 0;
+                    } else {
+                        c_used++; a_used = b_used = 0;
+                    }
+
+                    if (current.freq > 0) pq.push(current);
+                    if (current1.freq > 0) pq.push(current1);
+                }
+            }
+
+            else if (current.ch == 'c') {
+                if (c_used < 2) {
+                    ans += 'c';
+                    current.freq--;
+                    c_used++;
+                    a_used = b_used = 0;
+
+                    if (current.freq > 0) pq.push(current);
+                } else {
+                    if (pq.empty()) break;
+
+                    Pair current1 = pq.top();
+                    pq.pop();
+
+                    ans += current1.ch;
+                    current1.freq--;
+
+                    if (current1.ch == 'a') {
+                        a_used++; b_used = c_used = 0;
+                    } else if (current1.ch == 'b') {
+                        b_used++; a_used = c_used = 0;
+                    } else {
+                        c_used++; a_used = b_used = 0;
+                    }
+
+                    if (current.freq > 0) pq.push(current);
+                    if (current1.freq > 0) pq.push(current1);
+                }
+            }
+        }
+
+        return ans;
+    }
+};
+
 ```
 
 </template>

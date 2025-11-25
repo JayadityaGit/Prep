@@ -123,7 +123,90 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    unordered_set<int> sums;
+
+    int largestMagicSquare(vector<vector<int>>& grid) {
+        int n = grid.size(), m = grid[0].size();
+        for (int k = n; k >= 2; k--) {
+            sums.clear();
+            if (check(k, grid))
+                return k;
+        }
+        return 1;
+    }
+
+private:
+    bool check(int len, vector<vector<int>>& grid) {
+        int n = grid.size(), m = grid[0].size();
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                int r1 = i, c1 = j;
+                int r2 = r1 + len - 1, c2 = c1 + len - 1;
+
+                if (r2 >= n || c2 >= m)
+                    continue;
+
+                check_row(r1, c1, r2, c2, grid);
+                check_col(r1, c1, r2, c2, grid);
+                check_diagonal(r1, c1, r2, c2, grid);
+
+                if (sums.size() == 1)
+                    return true;
+
+                sums.clear();
+            }
+        }
+        return false;
+    }
+
+    void check_row(int r1, int c1, int r2, int c2, vector<vector<int>>& grid) {
+        for (int i = r1; i <= r2; i++) {
+            int sum = 0;
+            for (int j = c1; j <= c2; j++)
+                sum += grid[i][j];
+            sums.insert(sum);
+        }
+    }
+
+    void check_col(int r1, int c1, int r2, int c2, vector<vector<int>>& grid) {
+        for (int j = c1; j <= c2; j++) {
+            int sum = 0;
+            for (int i = r1; i <= r2; i++)
+                sum += grid[i][j];
+            sums.insert(sum);
+        }
+    }
+
+    void check_diagonal(int r1, int c1, int r2, int c2, vector<vector<int>>& grid) {
+        int sum = 0;
+        int i = r1, j = c1;
+
+        while (i != r2 && j != c2) {
+            sum += grid[i][j];
+            i++;
+            j++;
+        }
+        sum += grid[r2][c2];
+        sums.insert(sum);
+
+        sum = 0;
+        i = r1;
+        j = c2;
+
+        while (i != r2 && j != c1) {
+            sum += grid[i][j];
+            i++;
+            j--;
+        }
+        sum += grid[r2][c1];
+        sums.insert(sum);
+    }
+};
 ```
 
 </template>

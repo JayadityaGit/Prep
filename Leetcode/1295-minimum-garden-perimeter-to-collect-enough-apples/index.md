@@ -84,7 +84,33 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    long long minimumPerimeter(long long neededApples) {
+        long long low = 1;
+        long long high = 100000;
+        long long ans = -1;
+        while (low <= high) {
+            long long mid = low + (high - low) / 2;
+            if (ok(mid, neededApples)) {
+                ans = mid;
+                high = mid - 1;
+            } else {
+                low = mid + 1;
+            }
+        }
+        return ans * 8;
+    }
+
+private:
+    static bool ok(long long mid, long long need) {
+        long long total = 2LL * mid * (2LL * mid * mid + 3LL * mid + 1LL);
+        return total >= need;
+    }
+};
 ```
 
 </template>

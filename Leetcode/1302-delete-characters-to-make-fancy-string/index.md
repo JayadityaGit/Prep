@@ -85,7 +85,33 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    string makeFancyString(string s) {
+        int n = s.size();
+        string res = "";
+        char prev = '1';
+        int count = 0;
+        for (int i = 0; i < n; i++) {
+            char current = s[i];
+            if (current == prev && count == 2)
+                continue;
+            if (current == prev && count == 0) {
+                count = 2;
+                res += current;
+                prev = current;
+            } else {
+                res += current;
+                prev = current;
+                count = 0;
+            }
+        }
+        return res;
+    }
+};
 ```
 
 </template>

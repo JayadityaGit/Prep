@@ -92,7 +92,65 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    vector<vector<int>> sum;
+    vector<vector<int>> ways;
+    int mod = 1e9 + 7;
+
+    vector<int> pathsWithMaxScore(vector<string>& board) {
+        int n = board.size();
+        int m = board[0].size();
+
+        vector<vector<char>> matrix(n, vector<char>(m));
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < m; j++)
+                matrix[i][j] = board[i][j];
+
+        matrix[0][0] = '0';
+        matrix[n-1][m-1] = '0';
+
+        sum.assign(n+1, vector<int>(m+1, INT_MIN/10));
+        ways.assign(n+1, vector<int>(m+1, 0));
+
+        int dir[3][2] = {{0, -1}, {-1, 0}, {-1, -1}};
+
+        sum[n-1][m-1] = 0;
+        ways[n-1][m-1] = 1;
+
+        for (int i = n - 1; i >= 0; i--) {
+            for (int j = m - 1; j >= 0; j--) {
+                if (matrix[i][j] == 'X')
+                    continue;
+
+                for (auto &d : dir) {
+                    int newRow = i + d[0];
+                    int newCol = j + d[1];
+
+                    if (newRow >= 0 && newRow < n &&
+                        newCol >= 0 && newCol < m &&
+                        matrix[newRow][newCol] != 'X') {
+
+                        int newSum = sum[i][j] + (matrix[newRow][newCol] - '0');
+
+                        if (newSum > sum[newRow][newCol]) {
+                            sum[newRow][newCol] = newSum;
+                            ways[newRow][newCol] = ways[i][j];
+                        } else if (newSum == sum[newRow][newCol]) {
+                            ways[newRow][newCol] = (ways[newRow][newCol] + ways[i][j]) % mod;
+                        }
+                    }
+                }
+            }
+        }
+        if (ways[0][0] == 0)
+            return {0, 0};
+        return {sum[0][0], ways[0][0]};
+    }
+};
 ```
 
 </template>

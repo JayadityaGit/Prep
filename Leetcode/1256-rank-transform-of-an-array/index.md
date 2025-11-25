@@ -84,7 +84,32 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    vector<int> arrayRankTransform(vector<int>& arr) {
+        int n = arr.size();
+        vector<int> ans = arr;
+        unordered_map<int, int> mp;
+
+        sort(ans.begin(), ans.end());
+
+        int rank = 1;
+        for (int i = 0; i < n; i++) {
+            if (!mp.count(ans[i])) {
+                mp[ans[i]] = rank;
+                rank++;
+            }
+        }
+
+        vector<int> answer(n);
+        for (int i = 0; i < n; i++)
+            answer[i] = mp[arr[i]];
+        return answer;
+    }
+};
 ```
 
 </template>

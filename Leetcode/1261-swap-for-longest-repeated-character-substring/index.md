@@ -113,7 +113,80 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    vector<vector<int>> pref;
+
+    int maxRepOpt1(string text) {
+        int n = text.size();
+        pref.assign(n + 1, vector<int>(26, 0));
+
+        // Build prefix sum array
+        for (int i = 0; i < n; i++) {
+            int current = text[i] - 'a';
+            pref[i][current]++;
+            for (int j = 0; j < 26; j++) {
+                if (i - 1 >= 0)
+                    pref[i][j] += pref[i - 1][j];
+            }
+        }
+
+        int low = 1, high = n, ans = 1;
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+
+            if (check(text, mid, n)) {
+                ans = mid;
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+        return ans;
+    }
+
+    bool check(const string &s, int mid, int n) {
+        vector<int> freq(26, 0);
+
+        // First window
+        for (int i = 0; i < mid; i++)
+            freq[s[i] - 'a']++;
+
+        for (int i = 0; i < 26; i++) {
+            if (freq[i] > mid - 1)
+                return true;
+
+            if (freq[i] == mid - 1) {
+                int total = pref[n - 1][i];
+                total -= pref[mid - 1][i];
+                if (total > 0)
+                    return true;
+            }
+        }
+        int start = 0;
+
+        // Sliding window
+        for (int i = mid; i < s.size(); i++) {
+            freq[s[start] - 'a']--;
+            start++;
+            freq[s[i] - 'a']++;
+            for (int j = 0; j < 26; j++) {
+                if (freq[j] == mid - 1) {
+                    int total = pref[n - 1][j];
+                    int currentTotal = pref[i][j];
+                    if (start - 1 >= 0)
+                        currentTotal -= pref[start - 1][j];
+                    if (total - currentTotal > 0)
+                        return true;
+                }
+            }
+        }
+        return false;
+    }
+};
 ```
 
 </template>

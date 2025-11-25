@@ -126,7 +126,67 @@ class MajorityChecker {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+#include <bits/stdc++.h>
+using namespace std;
+
+class MajorityChecker {
+private:
+    unordered_map<int, vector<int>> mp;
+    vector<int> nums;
+
+public:
+    MajorityChecker(vector<int>& arr) {
+        int n = arr.size();
+        nums = arr;
+
+        for (int i = 0; i < n; i++) {
+            mp[arr[i]].push_back(i);
+        }
+    }
+
+    int query(int left, int right, int threshold) {
+        for (int i = 0; i < 10; i++) {
+            int index = left + rand() % (right - left + 1);
+            int val = nums[index];
+
+            vector<int>& idx = mp[val];
+
+            int cnt = bsRight(idx, right) - bsLeft(idx, left) + 1;
+            if (cnt >= threshold)
+                return val;
+        }
+        return -1;
+    }
+
+private:
+    int bsLeft(const vector<int>& arr, int left) {
+        int low = 0, high = arr.size() - 1, ans = arr.size();
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            if (arr[mid] >= left) {
+                ans = mid;
+                high = mid - 1;
+            } else {
+                low = mid + 1;
+            }
+        }
+        return ans;
+    }
+
+    int bsRight(const vector<int>& arr, int right) {
+        int low = 0, high = arr.size() - 1, ans = -1;
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            if (arr[mid] <= right) {
+                ans = mid;
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+        return ans;
+    }
+};
 ```
 
 </template>

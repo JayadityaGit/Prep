@@ -189,7 +189,113 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    struct Pair {
+        int row, col;
+        Pair(int r, int c) : row(r), col(c) {}
+        bool operator==(const Pair& other) const {
+            return row == other.row && col == other.col;
+        }
+    };
+
+    struct PairHash {
+        size_t operator()(const Pair& p) const {
+            return ((size_t)p.row << 32) ^ p.col;
+        }
+    };
+
+    static unordered_set<Pair, PairHash> s;
+
+    vector<vector<int>> queensAttacktheKing(vector<vector<int>>& queens, vector<int>& king) {
+        int n = queens.size();
+        vector<vector<int>> res;
+        s.clear();
+        for (auto& pos : queens)
+            s.insert(Pair(pos[0], pos[1]));
+        for (auto& pos : queens) {
+            if (can_attack(pos[0], pos[1], king[0], king[1])) {
+                res.push_back({pos[0], pos[1]});
+            }
+        }
+        return res;
+    }
+    static bool can_attack(int x, int y, int rx, int ry) {
+        int n = 8, m = 8;
+
+        // Right
+        int cx = x, cy = y + 1;
+        while (cy < m) {
+            if (s.count(Pair(cx, cy))) break;
+            if (cx == rx && cy == ry) return true;
+            cy++;
+        }
+
+        // Left
+        cx = x; cy = y - 1;
+        while (cy >= 0) {
+            if (s.count(Pair(cx, cy))) break;
+            if (cx == rx && cy == ry) return true;
+            cy--;
+        }
+
+        // Down
+        cx = x + 1; cy = y;
+        while (cx < n) {
+            if (s.count(Pair(cx, cy))) break;
+            if (cx == rx && cy == ry) return true;
+            cx++;
+        }
+
+        // Up
+        cx = x - 1; cy = y;
+        while (cx >= 0) {
+            if (s.count(Pair(cx, cy))) break;
+            if (cx == rx && cy == ry) return true;
+            cx--;
+        }
+
+        // Right Upper Diagonal
+        cx = x - 1; cy = y + 1;
+        while (cx >= 0 && cy < m) {
+            if (s.count(Pair(cx, cy))) break;
+            if (cx == rx && cy == ry) return true;
+            cx--; cy++;
+        }
+
+        // Left Upper Diagonal
+        cx = x - 1; cy = y - 1;
+        while (cx >= 0 && cy >= 0) {
+            if (s.count(Pair(cx, cy))) break;
+            if (cx == rx && cy == ry) return true;
+            cx--; cy--;
+        }
+
+        // Lower Left Diagonal
+        cx = x + 1; cy = y - 1;
+        while (cx < n && cy >= 0) {
+            if (s.count(Pair(cx, cy))) break;
+            if (cx == rx && cy == ry) return true;
+            cx++; cy--;
+        }
+
+        // Lower Right Diagonal
+        cx = x + 1; cy = y + 1;
+        while (cx < n && cy < m) {
+            if (s.count(Pair(cx, cy))) break;
+            if (cx == rx && cy == ry) return true;
+            cx++; cy++;
+        }
+
+        return false;
+    }
+};
+
+unordered_set<Solution::Pair, Solution::PairHash> Solution::s;
+
 ```
 
 </template>
