@@ -66,7 +66,24 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    bool checkIfExist(vector<int>& arr) {
+        unordered_map<int, int> mp;
+        for (int i = 0; i < arr.size(); i++) {
+            int current = arr[i];
+            if (mp.count(current * 2))
+                return true;
+            if (current % 2 == 0 && mp.count(current / 2))
+                return true;
+            mp[current] = i;
+        }
+        return false;
+    }
+};
 ```
 
 </template>

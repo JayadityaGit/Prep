@@ -110,7 +110,52 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    struct Pair {
+        int start, end;
+        Pair(int s, int e) : start(s), end(e) {}
+    };
+
+    struct CustomSort {
+        bool operator()(const Pair &a, const Pair &b) const {
+            if (a.start != b.start)
+                return a.start < b.start;
+            return a.end < b.end;
+        }
+    };
+
+    int maxEvents(vector<vector<int>>& arr) {
+        int n = arr.size();
+        vector<Pair> events;
+        events.reserve(n);
+        for (auto &v : arr)
+            events.emplace_back(v[0], v[1]);
+
+        sort(events.begin(), events.end(), CustomSort());
+
+        int lastDay = 0;
+        for (auto &e : events)
+            lastDay = max(lastDay, e.end);
+        priority_queue<int, vector<int>, greater<int>> pq;  // min-heap of end days
+        int currentIdx = 0;
+        int count = 0;
+        for (int day = 1; day <= lastDay; day++) {
+            while (currentIdx < n && events[currentIdx].start <= day)
+                pq.push(events[currentIdx++].end);
+            while (!pq.empty() && pq.top() < day)
+                pq.pop();
+            if (!pq.empty()) {
+                pq.pop();
+                count++;
+            }
+        }
+        return count;
+    }
+};
 ```
 
 </template>

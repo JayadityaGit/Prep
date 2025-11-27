@@ -100,7 +100,42 @@ class CustomStack {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+#include <bits/stdc++.h>
+using namespace std;
+
+class CustomStack {
+public:
+    int maxSize;
+    vector<int> arr;
+    int right;
+
+    CustomStack(int maxSize) {
+        this->maxSize = maxSize;
+        arr.resize(maxSize);
+        right = 0;
+    }
+
+    void push(int x) {
+        if (right == maxSize)
+            return;
+        arr[right] = x;
+        right++;
+    }
+
+    int pop() {
+        if (right == 0)
+            return -1;
+        int val = arr[right - 1];
+        right--;
+        return val;
+    }
+
+    void increment(int k, int val) {
+        int limit = min(k, right);
+        for (int i = 0; i < limit; i++)
+            arr[i] += val;
+    }
+};
 ```
 
 </template>

@@ -75,7 +75,32 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    int numberOfSubstrings(string s) {
+        int n = s.size();
+        unordered_map<char, int> freq;
+        int left = 0, right = 0;
+        long long count = 0;
+        while (left < n) {
+            while (right < n && freq.size() < 3) {
+                freq[s[right]]++;
+                right++;
+            }
+            if (freq.size() == 3) {
+                count += n - right + 1;
+            }
+            freq[s[left]]--;
+            if (freq[s[left]] == 0)
+                freq.erase(s[left]);
+            left++;
+        }
+        return (int)count;
+    }
+};
 ```
 
 </template>

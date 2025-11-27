@@ -73,7 +73,34 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    int countLargestGroup(int n) {
+        int freq[100] = {0};
+        for (int i = 1; i <= n; i++)
+            freq[digitSum(i)]++;
+        int maxi = 0, count = 0;
+        for (int i = 0; i < 100; i++)
+            maxi = max(maxi, freq[i]);
+        for (int i = 0; i < 100; i++)
+            if (freq[i] == maxi)
+                count++;
+        return count;
+    }
+
+private:
+    int digitSum(int x) {
+        int sum = 0;
+        while (x > 0) {
+            sum += x % 10;
+            x /= 10;
+        }
+        return sum;
+    }
+};
 ```
 
 </template>

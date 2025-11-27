@@ -99,7 +99,49 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    vector<string> watchedVideosByFriends(vector<vector<string>>& watchedVideos,
+                                          vector<vector<int>>& friends,
+                                          int id, int level)
+    {
+        int n = friends.size();
+        vector<int> vis(n, 0);
+        vis[id] = 1;
+
+        vector<int> q = {id};
+        for (int i = 0; i < level; i++) {
+            vector<int> next_q;
+            for (int u : q) {
+                for (int v : friends[u]) {
+                    if (!vis[v]) {
+                        vis[v] = 1;
+                        next_q.push_back(v);
+                    }
+                }
+            }
+            q = next_q;
+        }
+        unordered_map<string, int> freq;
+        for (int person : q) {
+            for (const string &video : watchedVideos[person]) {
+                freq[video]++;
+            }
+        }
+        vector<string> res;
+        res.reserve(freq.size());
+        for (auto &p : freq) res.push_back(p.first);
+
+        sort(res.begin(), res.end(), [&](const string &a, const string &b) {
+            if (freq[a] != freq[b]) return freq[a] < freq[b];
+            return a < b;
+        });
+        return res;
+    }
+};
 ```
 
 </template>
