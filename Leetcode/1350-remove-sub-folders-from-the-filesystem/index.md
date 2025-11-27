@@ -104,7 +104,48 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+class Solution {
+public:
+    static bool custom_sort(const string &a, const string &b) {
+        return a.size() < b.size();
+    }
+
+    vector<string> removeSubfolders(vector<string>& folder) {
+        int n = folder.size();
+        vector<string> res;
+        vector<int> vis(n, 0);
+
+        sort(folder.begin(), folder.end(), custom_sort);
+
+        for (int i = 0; i < n; i++) {
+            if (vis[i] == 1) continue;
+            res.push_back(folder[i]);
+            vis[i] = 1;
+            for (int j = i + 1; j < n; j++) {
+                if (check(folder[i], folder[j]))
+                    vis[j] = 1;
+            }
+        }
+        return res;
+    }
+
+private:
+    bool check(const string &first, const string &second) {
+        int n = first.size();
+        int m = second.size();
+        if (n == m) {
+            if (second.rfind(first, 0) == 0)
+                return true;
+        }
+        for (int i = 0; i < min(n, m); i++) {
+            if (first[i] != second[i])
+                return false;
+        }
+        if (m > n && second[n] == '/')
+            return true;
+        return false;
+    }
+};
 ```
 
 </template>

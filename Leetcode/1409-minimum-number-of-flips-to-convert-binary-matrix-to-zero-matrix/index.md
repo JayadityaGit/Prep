@@ -141,7 +141,76 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    struct Pair {
+        int row, col;
+        Pair(int r, int c) : row(r), col(c) {}
+    };
+
+    vector<vector<Pair>> choose;
+
+    int minFlips(vector<vector<int>>& mat) {
+        int n = mat.size(), m = mat[0].size();
+        choose.clear();
+
+        solve(0, 0, {}, mat);
+
+        int mini = INT_MAX;
+        vector<vector<int>> arr(n, vector<int>(m));
+        int dir[4][2] = {{0,1},{1,0},{0,-1},{-1,0}};
+        for (auto& curr : choose) {
+            for (int i = 0; i < n; i++)
+                for (int j = 0; j < m; j++)
+                    arr[i][j] = mat[i][j];
+            for (auto& p : curr) {
+                int r = p.row, c = p.col;
+                arr[r][c] ^= 1;
+                for (auto& d : dir) {
+                    int nr = r + d[0], nc = c + d[1];
+                    if (nr >= 0 && nc >= 0 && nr < n && nc < m)
+                        arr[nr][nc] ^= 1;
+                }
+            }
+            bool flag = true;
+            for (int i = 0; i < n && flag; i++) {
+                for (int j = 0; j < m; j++) {
+                    if (arr[i][j] != 0) {
+                        flag = false;
+                        break;
+                    }
+                }
+            }
+            if (flag)
+                mini = min(mini, (int)curr.size());
+        }
+        return mini == INT_MAX ? -1 : mini;
+    }
+
+private:
+    void solve(int row, int col, vector<Pair> current, vector<vector<int>>& mat) {
+        int n = mat.size(), m = mat[0].size();
+        if (row == n - 1 && col == m) {
+            choose.push_back(current);
+            return;
+        }
+        if (row == n && col == m) {
+            choose.push_back(current);
+            return;
+        }
+        if (col == m) {
+            row++;
+            col = 0;
+        }
+        current.push_back(Pair(row, col));
+        solve(row, col + 1, current, mat);
+        current.pop_back();
+        solve(row, col + 1, current, mat);
+    }
+};
 ```
 
 </template>

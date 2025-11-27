@@ -67,7 +67,22 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+class Solution {
+public:
+    int tupleSameProduct(vector<int>& nums) {
+        int n = nums.size();
+        unordered_map<int, int> mp;
+        int count = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < i; j++) {
+                long long prod = 1LL * nums[i] * nums[j];
+                count += 8 * mp[prod];
+                mp[prod]++;
+            }
+        }
+        return count;
+    }
+};
 ```
 
 </template>

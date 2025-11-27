@@ -99,7 +99,55 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+class Solution {
+public:
+    vector<vector<int>> prefix;
+
+    int countSquares(vector<vector<int>>& matrix) {
+        int n = matrix.size(), m = matrix[0].size();
+        prefix.assign(n + 1, vector<int>(m + 1, 0));
+
+        build(matrix);
+
+        int count = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (matrix[i][j] == 1) {
+                    int x1 = i, y1 = j, x2 = i, y2 = j;
+                    while (x2 < n && y2 < m) {
+                        int req_area = (x2 - x1 + 1) * (y2 - y1 + 1);
+                        int q = query(x1 + 1, y1 + 1, x2 + 1, y2 + 1);
+                        if (q == req_area)
+                            count++;
+                        x2++;
+                        y2++;
+                    }
+                }
+            }
+        }
+        return count;
+    }
+
+private:
+    int query(int x1, int y1, int x2, int y2) {
+        return prefix[x2][y2]
+             + prefix[x1 - 1][y1 - 1]
+             - prefix[x1 - 1][y2]
+             - prefix[x2][y1 - 1];
+    }
+
+    void build(const vector<vector<int>>& matrix) {
+        int n = matrix.size(), m = matrix[0].size();
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= m; j++) {
+                prefix[i][j] = matrix[i - 1][j - 1]
+                             + prefix[i - 1][j]
+                             + prefix[i][j - 1]
+                             - prefix[i - 1][j - 1];
+            }
+        }
+    }
+};
 ```
 
 </template>

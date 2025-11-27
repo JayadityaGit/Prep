@@ -109,7 +109,38 @@ class Skiplist {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+#include <bits/stdc++.h>
+using namespace std;
+
+class Skiplist {
+private:
+    set<int> st;
+    unordered_map<int, int> mp;
+
+public:
+    Skiplist() {
+    }
+
+    bool search(int target) {
+        return st.count(target) > 0;
+    }
+
+    void add(int num) {
+        mp[num]++;
+        st.insert(num);
+    }
+
+    bool erase(int num) {
+        if (st.count(num) == 0)
+            return false;
+        mp[num]--;
+        if (mp[num] == 0) {
+            mp.erase(num);
+            st.erase(num);
+        }
+        return true;
+    }
+};
 ```
 
 </template>

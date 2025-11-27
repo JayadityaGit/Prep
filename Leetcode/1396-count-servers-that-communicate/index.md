@@ -90,7 +90,35 @@ class Solution {
 <template #cpp>
 
 ```cpp
-// Add your C++ solution here
+class Solution {
+public:
+    int countServers(vector<vector<int>>& grid) {
+        int n = grid.size();
+        int m = grid[0].size();
+        unordered_map<int, int> row;
+        unordered_map<int, int> col;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (grid[i][j] == 1) {
+                    row[i]++;
+                    col[j]++;
+                }
+            }
+        }
+        int count = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (grid[i][j] == 1) {
+                    if (row[i] > 1)
+                        count++;
+                    else if (col[j] > 1)
+                        count++;
+                }
+            }
+        }
+        return count;
+    }
+};
 ```
 
 </template>
