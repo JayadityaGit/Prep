@@ -19,7 +19,6 @@
 ## 📚 Types of UML Diagrams
 
 ```mermaid
-%%{init: {'theme': 'default'}}%%
 mindmap
   root((UML Diagrams))
     Structural
@@ -60,7 +59,7 @@ mindmap
 <div align = "center">
 
 ```mermaid
-%%{init: {'theme': 'default'}}%%
+
 classDiagram
     class Person {
         - name : String
@@ -133,12 +132,12 @@ classDiagram
 </div>
 
 - The relationships between the classes are as follows:
-    - Inheritance: `Dog` and `Cat` inherit from `Animal`.
-    - Realization/Implementation: `Dog` and `Cat` implement the `Pet` interface.
-    - Aggregation: `Person` has an aggregation relationship with `Pet`, indicating that a person can have multiple pets.
-    - Composition:`Person` has a composition relationship with `Address`, indicating that an address cannot exist without a person.
-    - Association: `Person` has an association relationship with `Phone`, indicating that a person can have multiple phone numbers.
-      Dependency: `Phone` depends on the `PhoneType` enumeration for the `phoneType` attribute.
+  - Inheritance: `Dog` and `Cat` inherit from `Animal`.
+  - Realization/Implementation: `Dog` and `Cat` implement the `Pet` interface.
+  - Aggregation: `Person` has an aggregation relationship with `Pet`, indicating that a person can have multiple pets.
+  - Composition:`Person` has a composition relationship with `Address`, indicating that an address cannot exist without a person.
+  - Association: `Person` has an association relationship with `Phone`, indicating that a person can have multiple phone numbers.
+    Dependency: `Phone` depends on the `PhoneType` enumeration for the `phoneType` attribute.
 
 > ### 2. Object Diagram
 
@@ -147,7 +146,7 @@ classDiagram
 <div align = "center">
 
 ```mermaid
-%%{init: {'theme': 'default'}}%%
+
 graph TD
     subgraph "Object Diagram - Online Shopping"
         A["customer1: Customer<br/>name = 'John Doe'<br/>email = 'john@email.com'"]
@@ -170,7 +169,7 @@ Shows how components are organized and their dependencies.
 <div align = "center">
 
 ```mermaid
-%%{init: {'theme': 'default'}}%%
+
 graph TD
     subgraph "E-commerce System Components"
         A[User Interface]
@@ -202,7 +201,7 @@ graph TD
 - It answers **"What can users do with this system?"**
 
 ```mermaid
-%%{init: {'theme': 'default', 'flowchart': {'curve': 'linear'}}}%%
+%%{init: {'flowchart': {'curve': 'linear'}}}%%
 flowchart LR
   %% actors (outside the system boundary)
   Customer[Customer]
@@ -246,7 +245,7 @@ flowchart LR
 - It shows **how objects interact** through different types of **messages**.
 
 ```mermaid
-%%{init: {'theme': 'default'}}%%
+
 sequenceDiagram
     participant U as User
     participant UI as UserInterface
@@ -287,7 +286,7 @@ A message represents a communication between lifelines (objects/actors). Below a
 - Mermaid: Use `->>` for call and `-->>` for reply. You can show activation with `activate`/`deactivate`.
 
 ```mermaid
-%%{init: {'theme': 'default'}}%%
+
 sequenceDiagram
     participant C as Client
     participant S as Service
@@ -309,7 +308,7 @@ sequenceDiagram
 - Notation: In UML, an open arrow. In Mermaid, use `-)` for async messages.
 
 ```mermaid
-%%{init: {'theme': 'default'}}%%
+
 sequenceDiagram
     participant UI as UI
     participant Q as EventQueue
@@ -327,7 +326,7 @@ sequenceDiagram
 - Mermaid: `-->>` from callee to caller.
 
 ```mermaid
-%%{init: {'theme': 'default'}}%%
+
 sequenceDiagram
     participant A as API
     participant Auth as AuthService
@@ -343,7 +342,7 @@ sequenceDiagram
 - Mermaid: Use `create participant` before the first message to it.
 
 ```mermaid
-%%{init: {'theme': 'default'}}%%
+
 sequenceDiagram
     participant F as Factory
     participant O as Order
@@ -359,7 +358,7 @@ sequenceDiagram
 
 ```mermaid
 
-%%{init: {'theme': 'default'}}%%
+
 sequenceDiagram
     participant Session
 
@@ -374,7 +373,7 @@ sequenceDiagram
 - Mermaid: Use `A->>A`.
 
 ```mermaid
-%%{init: {'theme': 'default'}}%%
+
 sequenceDiagram
     participant Calc as Calculator
 
@@ -392,7 +391,7 @@ sequenceDiagram
 - Mermaid: Not directly supported; approximate by using a dedicated External participant.
 
 ```mermaid
-%%{init: {'theme': 'default'}}%%
+
 sequenceDiagram
     participant Ext as External
     participant S as Service
@@ -408,7 +407,7 @@ sequenceDiagram
 - Mermaid: Not directly supported; approximate by sending to a placeholder participant.
 
 ```mermaid
-%%{init: {'theme': 'default'}}%%
+
 sequenceDiagram
     participant S as Service
     participant Unknown as <unknown>
@@ -429,7 +428,7 @@ sequenceDiagram
 <div align = "center">
 
 ```mermaid
-%%{init: {'theme': 'default'}}%%
+
 flowchart TD
     Start([Start]) --> Input[Enter Login Credentials]
     Input --> Validate{Valid Credentials?}
@@ -461,7 +460,7 @@ flowchart TD
 <div align = "center">
 
 ```mermaid
-%%{init: {'theme': 'default'}}%%
+
 stateDiagram-v2
     [*] --> Draft
     Draft --> Submitted : submit()
@@ -499,7 +498,7 @@ stateDiagram-v2
 <div align = "center">
 
 ```mermaid
-%%{init: {'theme': 'default'}}%%
+
 classDiagram
     class Car {
         -driver: Driver
@@ -526,7 +525,7 @@ classDiagram
 <div align = "center">
 
 ```mermaid
-%%{init: {'theme': 'default'}}%%
+
 classDiagram
     class Car {
         -model: String
@@ -553,7 +552,7 @@ classDiagram
 <div align = "center">
 
 ```mermaid
-%%{init: {'theme': 'default'}}%%
+
 classDiagram
     class House {
         -address: String
@@ -581,7 +580,7 @@ classDiagram
 <div align = "center">
 
 ```mermaid
-%%{init: {'theme': 'default'}}%%
+
 classDiagram
     class Animal {
         <<abstract>>
@@ -618,7 +617,7 @@ classDiagram
 <div align = "center">
 
 ```mermaid
-%%{init: {'theme': 'default'}}%%
+
 classDiagram
     class Drawable {
         <<interface>>
@@ -656,7 +655,7 @@ classDiagram
 <div align = "center">
 
 ```mermaid
-%%{init: {'theme': 'default'}}%%
+
 classDiagram
     class OrderProcessor {
         +processOrder(order)
@@ -693,7 +692,7 @@ classDiagram
 <div align = "center">
 
 ```mermaid
-%%{init: {'theme': 'default'}}%%
+
 classDiagram
     class Library {
         - name : String
@@ -736,17 +735,10 @@ Let's design a complete order management system using various UML diagrams.
 <div align = "center">
     
 ```mermaid
-%%{init: {'theme': 'default'}}%%
+
 classDiagram
-    class Customer {
-        - customerId : String
-        - name : String
-        - email : String
-        - address : Address
-        + placeOrder(items)
-        + getOrderHistory()
-        + updateProfile()
-    }
+class Customer { - customerId : String - name : String - email : String - address : Address + placeOrder(items) + getOrderHistory() + updateProfile()
+}
 
     class Order {
         - orderId : String
